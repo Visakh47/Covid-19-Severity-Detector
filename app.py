@@ -23,7 +23,7 @@ def main():
     st.markdown(html_temp, unsafe_allow_html=True)
 
     st.write('\n')
-    symptoms_list = ['Breathing_Problem','Fever','Dry_Cough','Sore_Throat','Running_Nose','Asthma','Chronic_LungDisease','Headache','Heart_Disease','Diabetes','Hyper_Tension','Fatigue','Gastrointestinal','Abroad_travel','Contact_with_COVID_Patient','Attended_Large_Gathering','Visited_Public_Exposed_Places','Family_working_in_public_exposed_places']
+    symptoms_list = ['Breathing Problem','Fever','Dry Cough','Sore Throat','Running Nose','Asthma','Chronic Lung Disease','Headache','Heart Disease','Diabetes','Hyper Tension','Fatigue','Gastrointestinal','Abroad travel','Contact with COVID Patient','Attended Large Gathering','Visited Public Exposed Places','Family working inpublic exposed places']
     st.subheader('Please Select The Applicable Properties:')
     symptoms = st.multiselect('',[*symptoms_list],key='symptoms')
 
