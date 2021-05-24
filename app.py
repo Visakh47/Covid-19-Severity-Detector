@@ -1,4 +1,3 @@
-from typing import Text
 import streamlit as st
 from streamlit import caching
 import pickle 
