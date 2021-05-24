@@ -7,13 +7,12 @@ Base = declarative_base()
 
 # Main code here
 
-class UserInput(Base):
-    __tablename__ = "userinputs"
+class UserAuth(Base):
+    __tablename__ = "userauth"
     
     id = Column(Integer, primary_key=True)
-    name = Column(String)
-    review = Column(String)
-    improve = Column(String)
+    username = Column(String)
+    password = Column(String)
 
 #SQLLite is serverless -> less space
 if __name__ == '__main__':
