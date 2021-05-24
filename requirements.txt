@@ -7,3 +7,5 @@ pandas>=0.19
 sqlalchemy>=1.4.1
 streamlit
 pymongo==x.x.x
+dnspython==x.x.x
+
