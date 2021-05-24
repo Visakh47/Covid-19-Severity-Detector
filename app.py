@@ -4,7 +4,11 @@ from streamlit import caching
 import pickle 
 import numpy as np
 import pymongo
-import os
+import SessionState
+
+#for resetting state
+session = SessionState.get(run_id=0)
+
 
 # Data Base
 from sqlalchemy import create_engine
@@ -96,7 +100,13 @@ def main():
 
         st.write("\n")
 
-        if st.button("Predict 🔮"):
+        cols = st.beta_columns((1,1,4))
+
+        if cols[1].button("Reset 🔄"):
+            session.run_id += 1
+
+        if cols[0].button("Predict 🔮"):
+            st.write('\n')
             output=predict_covid(prediction_value)
             output = abs(1-output)
             fout = '{0:.2f}'.format(output*100) 
@@ -106,10 +116,10 @@ def main():
             else:
                 st.success('The probability of being COVID positive is {} %, It is unlikely that you are covid postive '.format(fout))
                 st.info('if you still have doubts , please contact your physician')
-
+            
         st.write('\n')
 
-
+        
 
         st.subheader('Feedback Form ⚡')
         form = st.form(key='my-form')
@@ -118,10 +128,13 @@ def main():
         improve_i = form.text_input('What can we do to improve 🤔 ?')
         submit = form.form_submit_button('Submit')
 
+        
+            
 
         if submit and name_i and review_i and improve_i:
-
+                
             try:
+                session.run_id += 1
                 push_data(name_i,review_i,improve_i)
                 st.success(f'Thank you {name_i} for the feedback 🥰 !, We are trying our best to improve the application :) ')
             except Exception as e:
