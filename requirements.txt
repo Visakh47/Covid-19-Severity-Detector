@@ -6,6 +6,6 @@ matplotlib>=1.4.3
 pandas>=0.19
 sqlalchemy>=1.4.1
 streamlit
-pymongo==x.x.x
-dnspython==x.x.x
+pymongo==3.3.0
+dnspython
 
