@@ -10,8 +10,8 @@ import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from feedback import UserAuth
-from dotenv import load_dotenv
-load_dotenv()
+# from dotenv import load_dotenv
+# load_dotenv()
 
 engine = create_engine('sqlite:///project_db.sqlite3')
 #Connect to DB
@@ -33,19 +33,17 @@ def main():
     st.set_page_config(page_title="Covid 19 App", page_icon=None, layout='centered', initial_sidebar_state='collapsed')
     
     # Initialize connection.
-
+    client = pymongo.MongoClient("mongodb+srv://visakh:feedbackforms@feedback.0r8bu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
     # Pull data from the collection.
     # Uses st.cache to only rerun when the query changes or after 10 min.
     @st.cache(ttl=600,show_spinner=False)
-    def get_data():
-        client = pymongo.MongoClient(os.getenv("MONGO_URL"))
+    def get_data(): 
         db = client.covidapp
         items = db.feedback.find()
         items = list(items)  # make hashable for st.cache
         return items
 
     def push_data(name,review,improve):
-        client = pymongo.MongoClient(os.getenv("MONGO_URL"))
         db = client.covidapp
         post = {"name":name,
                 "review":review,
