@@ -8,4 +8,7 @@ sqlalchemy>=1.4.1
 streamlit
 pymongo==3.11.4
 dnspython
-
+fake-useragent
+htbuilder==0.3.0
+requests==2.23.0
+requests-aws4auth==1.0.1
