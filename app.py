@@ -39,7 +39,7 @@ def predict_covid(prediction_value):
 
 
 def main():
-    st.set_page_config(page_title="Covid 19 App", page_icon="https://www.cowin.gov.in/favicon.ico", layout='centered', initial_sidebar_state='collapsed')
+    st.set_page_config(page_title="Covid 19 App", page_icon="favicon.png", layout='centered', initial_sidebar_state='collapsed')
     
 
     @st.cache(ttl=600,allow_output_mutation=True, suppress_st_warning=True)
@@ -182,7 +182,7 @@ def main():
         with center_column_1:
             state_inp = formcheck.selectbox('Select State 🚀', [""] + valid_states)
             if state_inp != "":
-                mapping_df = filter_column(mapping_df, "state_name", state_inp)
+                mapping_df = filter_column(mapping_df, "state_name ", state_inp)
 
 
         mapping_dict = pd.Series(mapping_df["district id"].values,
