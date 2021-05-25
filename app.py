@@ -45,6 +45,7 @@ def main():
     @st.cache(ttl=600,allow_output_mutation=True, suppress_st_warning=True)
     def load_mapping():
         df = pd.read_csv("cowin/district_mapping.csv")
+        df.columns = df.columns.str.strip()
         return df
 
     @st.cache(ttl=600,allow_output_mutation=True, suppress_st_warning=True)
