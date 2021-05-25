@@ -173,7 +173,7 @@ def main():
         st.write("\n\n")
 
 
-        valid_states = list(np.unique(mapping_df["state_name"].values))
+        valid_states = list(np.unique(mapping_df["state_name "].values))
 
         formcheck = st.form(key='my-form3')
         center_column_1, right_column_1 = st.beta_columns(2)
