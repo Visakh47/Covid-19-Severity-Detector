@@ -37,29 +37,29 @@ def predict_covid(prediction_value):
     pred = '{0:.{1}f}'.format(prediction[0][0], 5)
     return float(pred)
 
-@st.cache(allow_output_mutation=True, suppress_st_warning=True)
-def load_mapping():
-    df = pd.read_csv("cowin/district_mapping.csv")
-    return df
-
-@st.cache(allow_output_mutation=True, suppress_st_warning=True)
-def filter_column(df, col, value):
-    df_temp = deepcopy(df.loc[df[col] == value, :])
-    return df_temp
-
-@st.cache(allow_output_mutation=True, suppress_st_warning=True)
-def filter_capacity(df, col, value):
-    df_temp = deepcopy(df.loc[df[col] > value, :])
-    return df_temp
-
-@st.cache(allow_output_mutation=True)
-def Pageviews():
-    return []
-
 
 def main():
     st.set_page_config(page_title="Covid 19 App", page_icon="https://www.cowin.gov.in/favicon.ico", layout='centered', initial_sidebar_state='collapsed')
     
+
+    @st.cache(ttl=600,allow_output_mutation=True, suppress_st_warning=True)
+    def load_mapping():
+        df = pd.read_csv("cowin/district_mapping.csv")
+        return df
+
+    @st.cache(ttl=600,allow_output_mutation=True, suppress_st_warning=True)
+    def filter_column(df, col, value):
+        df_temp = deepcopy(df.loc[df[col] == value, :])
+        return df_temp
+
+    @st.cache(ttl=600,allow_output_mutation=True, suppress_st_warning=True)
+    def filter_capacity(df, col, value):
+        df_temp = deepcopy(df.loc[df[col] > value, :])
+        return df_temp
+
+
+
+
     # Initialize connection.
     client = pymongo.MongoClient("mongodb+srv://visakh:feedbackforms@feedback.0r8bu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
     # Pull data from the collection.
@@ -144,7 +144,7 @@ def main():
         st.write('\n\n\n')
 
 
-        # from footer_utils import image, link, layout, footer
+
 
         # browser_header = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36'}
         # browser_header = {'User-Agent': 'Mozilla/5.0 (Linux; Android 10; ONEPLUS A6000) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.99 Mobile Safari/537.36'}
