@@ -172,7 +172,8 @@ def main():
 
         st.write("\n\n")
 
-
+        mapping_df.columns = mapping_df.columns.str.strip()
+        
         valid_states = list(np.unique(mapping_df["state_name"].values))
 
         formcheck = st.form(key='my-form3')
