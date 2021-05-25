@@ -190,12 +190,6 @@ def main():
                     col3.write(feedback['review'])
                     col4.write(feedback['improve']) 
                     q = q+1
-                    
-                # for item in results:
-                #     col1.write(item.id)
-                #     col2.write(item.name)
-                #     col3.write(item.review)
-                #     col4.write(item.improve)  
             except Exception as e:
                 st.error('There seems to be some error 🤔 , please try again later :( ')
         else:    
