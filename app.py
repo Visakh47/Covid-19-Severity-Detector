@@ -43,7 +43,7 @@ def predict_covid(prediction_value):
 
 @st.cache(allow_output_mutation=True, suppress_st_warning=True)
 def load_mapping():
-    df = pd.read_csv("district_mapping.csv")
+    df = pd.read_csv("district_mappingnew.csv")
     return df
 
 def filter_column(df, col, value):
