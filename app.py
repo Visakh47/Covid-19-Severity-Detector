@@ -87,7 +87,7 @@ def main():
     # END OF MONDO DB CODE  
 
 
-    st.title("COVID-19 Severity Prediction Model 🖥️")
+    st.title("COVID-19 Severit Prediction Model 🖥️")
     # html_temp = """
     # <div style="background-color:#FF0000 ;padding:3px">
     # <h2 style="color:white;text-align:center;"> Covid 19 Severity Prediction </h2>
@@ -175,60 +175,61 @@ def main():
 
         mapping_df.columns = mapping_df.columns.str.strip()
         
-        valid_states = list(np.unique(mapping_df["state_name"].values))
-
-        formcheck = st.form(key='my-form3')
-        center_column_1, right_column_1 = st.beta_columns(2)
-
-
-        with center_column_1:
-            state_inp = formcheck.selectbox('Select State 🚀', [""] + valid_states)
-            if state_inp != "":
-                mapping_df = filter_column(mapping_df, "state_name", state_inp)
+        try:
+            valid_states = list(np.unique(mapping_df["state_name"].values))
+            formcheck = st.form(key='my-form3')
+            center_column_1, right_column_1 = st.beta_columns(2)
 
 
-        mapping_dict = pd.Series(mapping_df["district id"].values,
-                                index = mapping_df["district name"].values).to_dict()
+            with center_column_1:
+                state_inp = formcheck.selectbox('Select State 🚀', [""] + valid_states)
+                if state_inp != "":
+                    mapping_df = filter_column(mapping_df, "state_name", state_inp)
 
-        # numdays = st.sidebar.slider('Select Date Range', 0, 100, 10)
-        unique_districts = list(mapping_df["district name"].unique())
-        unique_districts.sort()
-        with right_column_1:
-            dist_inp = formcheck.selectbox('Select District 🏙️', unique_districts)
 
-        DIST_ID = mapping_dict[dist_inp]
+            mapping_dict = pd.Series(mapping_df["district id"].values,
+                                    index = mapping_df["district name"].values).to_dict()
 
-        base = datetime.datetime.today()
-        numdays = 3
-        date_list = [base + datetime.timedelta(days=x) for x in range(20)]
-        date_str = [x.strftime("%d-%m-%Y") for x in date_list]
-        temp_user_agent = UserAgent()
-        browser_header = {'User-Agent': temp_user_agent.random}
+            # numdays = st.sidebar.slider('Select Date Range', 0, 100, 10)
+            unique_districts = list(mapping_df["district name"].unique())
+            unique_districts.sort()
+            with right_column_1:
+                dist_inp = formcheck.selectbox('Select District 🏙️', unique_districts)
 
-        final_df = None
-        for INP_DATE in date_str:
-            URL = "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id={}&date={}".format(DIST_ID, INP_DATE)
-            response = requests.get(URL, headers=browser_header)
-            if (response.ok) and ('centers' in json.loads(response.text)):
-                resp_json = json.loads(response.text)['centers']
-                if resp_json is not None:
-                    df = pd.DataFrame(resp_json)
-                    if len(df):
-                        df = df.explode("sessions")
-                        df['min_age_limit'] = df.sessions.apply(lambda x: x['min_age_limit'])
-                        df['vaccine'] = df.sessions.apply(lambda x: x['vaccine'])
-                        df['available_capacity'] = df.sessions.apply(lambda x: x['available_capacity'])
-                        df['date'] = df.sessions.apply(lambda x: x['date'])
-                        df = df[["date", "available_capacity", "vaccine", "min_age_limit", "pincode", "name", "state_name", "district_name", "block_name", "fee_type"]]
-                        if final_df is not None:
-                            final_df = pd.concat([final_df, df])
-                        else:
-                            final_df = deepcopy(df)
-                else:
-                    st.error("No rows in the data Extracted from the API")
-        #     else:
-        #         st.error("Invalid response")
+            DIST_ID = mapping_dict[dist_inp]
 
+            base = datetime.datetime.today()
+            numdays = 3
+            date_list = [base + datetime.timedelta(days=x) for x in range(20)]
+            date_str = [x.strftime("%d-%m-%Y") for x in date_list]
+            temp_user_agent = UserAgent()
+            browser_header = {'User-Agent': temp_user_agent.random}
+
+            final_df = None
+            for INP_DATE in date_str:
+                URL = "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id={}&date={}".format(DIST_ID, INP_DATE)
+                response = requests.get(URL, headers=browser_header)
+                if (response.ok) and ('centers' in json.loads(response.text)):
+                    resp_json = json.loads(response.text)['centers']
+                    if resp_json is not None:
+                        df = pd.DataFrame(resp_json)
+                        if len(df):
+                            df = df.explode("sessions")
+                            df['min_age_limit'] = df.sessions.apply(lambda x: x['min_age_limit'])
+                            df['vaccine'] = df.sessions.apply(lambda x: x['vaccine'])
+                            df['available_capacity'] = df.sessions.apply(lambda x: x['available_capacity'])
+                            df['date'] = df.sessions.apply(lambda x: x['date'])
+                            df = df[["date", "available_capacity", "vaccine", "min_age_limit", "pincode", "name", "state_name", "district_name", "block_name", "fee_type"]]
+                            if final_df is not None:
+                                final_df = pd.concat([final_df, df])
+                            else:
+                                final_df = deepcopy(df)
+                    else:
+                        st.error("No rows in the data Extracted from the API")
+            #     else:
+            #         st.error("Invalid response")
+        except  Exception as e:
+            st.write(str(e))
 
 
         if (final_df is not None) and (len(final_df)):
