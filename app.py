@@ -15,6 +15,11 @@ from fake_useragent import UserAgent
 session = SessionState.get(run_id=0)
 
 
+
+# browser_header = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36'}
+# browser_header = {'User-Agent': 'Mozilla/5.0 (Linux; Android 10; ONEPLUS A6000) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.99 Mobile Safari/537.36'}
+        
+
 # Data Base
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -38,29 +43,26 @@ def predict_covid(prediction_value):
     return float(pred)
 
 
+@st.cache(allow_output_mutation=True, suppress_st_warning=True)
+def load_mapping():
+    df = pd.read_csv("cowin/district_mapping.csv")
+    return df
+
+def filter_column(df, col, value):
+    df_temp = deepcopy(df.loc[df[col] == value, :])
+    return df_temp
+
+def filter_capacity(df, col, value):
+    df_temp = deepcopy(df.loc[df[col] > value, :])
+    return df_temp
+
+@st.cache(allow_output_mutation=True)
+def Pageviews():
+    return []
+
 def main():
     st.set_page_config(page_title="Covid 19 App", page_icon="https://www.cowin.gov.in/favicon.ico", layout='centered', initial_sidebar_state='collapsed')
     
-
-    @st.cache(ttl=600,allow_output_mutation=True, suppress_st_warning=True)
-    def load_mapping():
-        df = pd.read_csv("cowin/district_mapping.csv")
-        df.columns = df.columns.str.strip()
-        return df
-
-    @st.cache(ttl=600,allow_output_mutation=True, suppress_st_warning=True)
-    def filter_column(df, col, value):
-        df_temp = deepcopy(df.loc[df[col] == value, :])
-        return df_temp
-
-    @st.cache(ttl=600,allow_output_mutation=True, suppress_st_warning=True)
-    def filter_capacity(df, col, value):
-        df_temp = deepcopy(df.loc[df[col] > value, :])
-        return df_temp
-
-
-
-
     # Initialize connection.
     client = pymongo.MongoClient("mongodb+srv://visakh:feedbackforms@feedback.0r8bu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
     # Pull data from the collection.
@@ -147,9 +149,6 @@ def main():
 
 
 
-        # browser_header = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36'}
-        # browser_header = {'User-Agent': 'Mozilla/5.0 (Linux; Android 10; ONEPLUS A6000) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.99 Mobile Safari/537.36'}
-        
         mapping_df = load_mapping()
 
         rename_mapping = {
@@ -164,7 +163,7 @@ def main():
             'block_name': 'Block Name',
             'fee_type' : 'Fees'
             }
-
+    
         st.title('CoWin Slot Availabilty💉 ')
 
         st.write("\n\n")
@@ -172,19 +171,19 @@ def main():
         st.info("The CoWIN API's Requests are limited , Sometimes results may not come. Try again after 5 minutes 🌐 ")
 
         st.write("\n\n")
-
-        mapping_df.columns = mapping_df.columns.str.strip()
-        
+      
         valid_states = list(np.unique(mapping_df["state_name"].values))
 
         formcheck = st.form(key='my-form3')
         center_column_1, right_column_1 = st.beta_columns(2)
 
 
+
         with center_column_1:
-            state_inp = formcheck.selectbox('Select State 🚀', [""] + valid_states)
+            state_inp = formcheck.selectbox('Select State', [""] + valid_states)
             if state_inp != "":
                 mapping_df = filter_column(mapping_df, "state_name", state_inp)
+
 
 
         mapping_dict = pd.Series(mapping_df["district id"].values,
@@ -199,8 +198,8 @@ def main():
         DIST_ID = mapping_dict[dist_inp]
 
         base = datetime.datetime.today()
-        numdays = 3
-        date_list = [base + datetime.timedelta(days=x) for x in range(20)]
+        numdays = 20
+        date_list = [base + datetime.timedelta(days=x) for x in range(numdays)]
         date_str = [x.strftime("%d-%m-%Y") for x in date_list]
         temp_user_agent = UserAgent()
         browser_header = {'User-Agent': temp_user_agent.random}
