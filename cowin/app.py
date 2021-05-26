@@ -48,23 +48,17 @@ rename_mapping = {
     'fee_type' : 'Fees'
     }
 
-st.title('CoWin Slot Availabilty💉 ')
-
-st.write("\n\n")
-
-st.info("The CoWIN API's Requests are limited , Sometimes results may not come. Try again after 5 minutes 🌐 ")
-
-st.write("\n\n")
-
+st.title('CoWIN Vaccination Slot Availability')
+st.info('The CoWIN APIs are geo-fenced so sometimes you may not see an output! Please try after sometime ')
 
 valid_states = list(np.unique(mapping_df["state_name"].values))
 
-formlogin = st.form(key='my-form2')
-center_column_1, right_column_1 = st.beta_columns(2)
-
+left_column_1, center_column_1, right_column_1 = st.beta_columns(3)
+with left_column_1:
+    numdays = st.slider('Select Date Range', 0, 100, 3)
 
 with center_column_1:
-    state_inp = formlogin.selectbox('Select State 🚀', [""] + valid_states)
+    state_inp = st.selectbox('Select State', [""] + valid_states)
     if state_inp != "":
         mapping_df = filter_column(mapping_df, "state_name", state_inp)
 
@@ -76,14 +70,14 @@ mapping_dict = pd.Series(mapping_df["district id"].values,
 unique_districts = list(mapping_df["district name"].unique())
 unique_districts.sort()
 with right_column_1:
-    dist_inp = formlogin.selectbox('Select District 🏙️', unique_districts)
+    dist_inp = st.selectbox('Select District', unique_districts)
 
 DIST_ID = mapping_dict[dist_inp]
 
 base = datetime.datetime.today()
-numdays = 3
-date_list = [base + datetime.timedelta(days=x) for x in range(5)]
+date_list = [base + datetime.timedelta(days=x) for x in range(numdays)]
 date_str = [x.strftime("%d-%m-%Y") for x in date_list]
+
 temp_user_agent = UserAgent()
 browser_header = {'User-Agent': temp_user_agent.random}
 
@@ -111,8 +105,6 @@ for INP_DATE in date_str:
 #     else:
 #         st.error("Invalid response")
 
-
-
 if (final_df is not None) and (len(final_df)):
     final_df.drop_duplicates(inplace=True)
     final_df.rename(columns=rename_mapping, inplace=True)
@@ -120,42 +112,71 @@ if (final_df is not None) and (len(final_df)):
     left_column_2, center_column_2, right_column_2, right_column_2a,  right_column_2b = st.beta_columns(5)
     with left_column_2:
         valid_pincodes = list(np.unique(final_df["Pincode"].values))
-        pincode_inp = formlogin.selectbox('Select Pincode 📍', [""] + valid_pincodes)
+        pincode_inp = st.selectbox('Select Pincode', [""] + valid_pincodes)
         if pincode_inp != "":
             final_df = filter_column(final_df, "Pincode", pincode_inp)
 
     with center_column_2:
         valid_age = [18, 45]
-        age_inp = formlogin.selectbox('Select Minimum Age 👨', [""] + valid_age)
+        age_inp = st.selectbox('Select Minimum Age', [""] + valid_age)
         if age_inp != "":
             final_df = filter_column(final_df, "Minimum Age Limit", age_inp)
 
     with right_column_2:
         valid_payments = ["Free", "Paid"]
-        pay_inp = formlogin.selectbox('Select Free or Paid 🆓 ', [""] + valid_payments)
+        pay_inp = st.selectbox('Select Free or Paid', [""] + valid_payments)
         if pay_inp != "":
             final_df = filter_column(final_df, "Fees", pay_inp)
-    
+
     with right_column_2a:
         valid_capacity = ["Available"]
-        cap_inp = formlogin.selectbox('Select Availablilty ❇️', [""] + valid_capacity)
+        cap_inp = st.selectbox('Select Availablilty', [""] + valid_capacity)
         if cap_inp != "":
             final_df = filter_capacity(final_df, "Available Capacity", 0)
 
     with right_column_2b:
         valid_vaccines = ["COVISHIELD", "COVAXIN"]
-        vaccine_inp = formlogin.selectbox('Select Vaccine💉', [""] + valid_vaccines)
+        vaccine_inp = st.selectbox('Select Vaccine', [""] + valid_vaccines)
         if vaccine_inp != "":
             final_df = filter_column(final_df, "Vaccine", vaccine_inp)
-    check = formlogin.form_submit_button("CHECK ✔️")
-    if check:
-        table = deepcopy(final_df)
-        table.reset_index(inplace=True, drop=True)
-        st.write("\n")
-        st.subheader(" RESULT :📋 ")
-        st.write("\n\n")
-        st.write(table)
-        
+
+    table = deepcopy(final_df)
+    table.reset_index(inplace=True, drop=True)
+    st.table(table)
 else:
     st.error("Unable to fetch data currently, please try after sometime")
 
+# footer="""<style>
+# a:link , a:visited{
+# color: blue;
+# background-color: transparent;
+# text-decoration: underline;
+# }
+
+# a:hover,  a:active {
+# color: red;
+# background-color: transparent;
+# text-decoration: underline;
+# }
+
+# .footer {
+# position: fixed;
+# left: 0;
+# bottom: 0;
+# width: 100%;
+# background-color: white;
+# color: black;
+# text-align: center;
+# }
+# </style>
+# <div class="footer">
+# <p>Developed with ❤ by <a style='display: block; text-align: center;' href="https://github.com/bhattbhavesh91" target="_blank">Bhavesh Bhatt</a></p>
+# </div>
+# """
+# st.markdown(footer,unsafe_allow_html=True)
+# st.markdown("_- Bhavesh Bhatt_")
+
+pageviews=Pageviews()
+pageviews.append('dummy')
+pg_views = len(pageviews)
+# footer(pg_views)
