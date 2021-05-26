@@ -14,8 +14,6 @@ from fake_useragent import UserAgent
 #for resetting state
 session = SessionState.get(run_id=0)
 
-
-
 # browser_header = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36'}
 # browser_header = {'User-Agent': 'Mozilla/5.0 (Linux; Android 10; ONEPLUS A6000) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.99 Mobile Safari/537.36'}
         
@@ -43,7 +41,7 @@ def predict_covid(prediction_value):
     return float(pred)
 
 
-# @st.cache(allow_output_mutation=True, suppress_st_warning=True)
+@st.cache(allow_output_mutation=True, suppress_st_warning=True)
 def load_mapping():
     df = pd.read_csv("district_mapping.csv")
     return df
@@ -89,23 +87,6 @@ def main():
     # END OF MONDO DB CODE  
 
 
-    mapping_df = load_mapping()
-
-    rename_mapping = {
-            'date': 'Date',
-            'min_age_limit': 'Minimum Age Limit',
-            'available_capacity': 'Available Capacity',
-            'vaccine': 'Vaccine',
-            'pincode': 'Pincode',
-            'name': 'Hospital Name',
-            'state_name' : 'State',
-            'district_name' : 'District',
-            'block_name': 'Block Name',
-            'fee_type' : 'Fees'
-            }
-
-
-    valid_states = list(np.unique(mapping_df["state_name"].values))
 
 
 
@@ -180,6 +161,23 @@ def main():
         st.write("\n\n")
       
         
+        mapping_df = load_mapping()
+
+        rename_mapping = {
+                'date': 'Date',
+                'min_age_limit': 'Minimum Age Limit',
+                'available_capacity': 'Available Capacity',
+                'vaccine': 'Vaccine',
+                'pincode': 'Pincode',
+                'name': 'Hospital Name',
+                'state_name' : 'State',
+                'district_name' : 'District',
+                'block_name': 'Block Name',
+                'fee_type' : 'Fees'
+                }
+
+
+        valid_states = list(np.unique(mapping_df["state_name"].values))
 
         formcheck = st.form(key='my-form3')
         center_column_1, right_column_1 = st.beta_columns(2)
