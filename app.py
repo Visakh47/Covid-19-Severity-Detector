@@ -43,7 +43,7 @@ def predict_covid(prediction_value):
     return float(pred)
 
 
-@st.cache(allow_output_mutation=True, suppress_st_warning=True)
+# @st.cache(allow_output_mutation=True, suppress_st_warning=True)
 def load_mapping():
     df = pd.read_csv("district_mapping.csv")
     return df
@@ -107,7 +107,7 @@ def main():
 
     valid_states = list(np.unique(mapping_df["state_name"].values))
 
-    
+
 
     st.title("COVID-19 Severity Prediction Model 🖥️")
     # html_temp = """
