@@ -228,57 +228,57 @@ def main():
                         st.error("No rows in the data Extracted from the API")
             #     else:
             #         st.error("Invalid response")
-        except  Exception as e:
-            st.write(str(e))
+        
 
 
-        if (final_df is not None) and (len(final_df)):
-            final_df.drop_duplicates(inplace=True)
-            final_df.rename(columns=rename_mapping, inplace=True)
+            if (final_df is not None) and (len(final_df)):
+                final_df.drop_duplicates(inplace=True)
+                final_df.rename(columns=rename_mapping, inplace=True)
 
-            left_column_2, center_column_2, right_column_2, right_column_2a,  right_column_2b = st.beta_columns(5)
-            with left_column_2:
-                valid_pincodes = list(np.unique(final_df["Pincode"].values))
-                pincode_inp = formcheck.selectbox('Select Pincode 📍', [""] + valid_pincodes)
-                if pincode_inp != "":
-                    final_df = filter_column(final_df, "Pincode", pincode_inp)
+                left_column_2, center_column_2, right_column_2, right_column_2a,  right_column_2b = st.beta_columns(5)
+                with left_column_2:
+                    valid_pincodes = list(np.unique(final_df["Pincode"].values))
+                    pincode_inp = formcheck.selectbox('Select Pincode 📍', [""] + valid_pincodes)
+                    if pincode_inp != "":
+                        final_df = filter_column(final_df, "Pincode", pincode_inp)
 
-            with center_column_2:
-                valid_age = [18, 45]
-                age_inp = formcheck.selectbox('Select Minimum Age 👨', [""] + valid_age)
-                if age_inp != "":
-                    final_df = filter_column(final_df, "Minimum Age Limit", age_inp)
+                with center_column_2:
+                    valid_age = [18, 45]
+                    age_inp = formcheck.selectbox('Select Minimum Age 👨', [""] + valid_age)
+                    if age_inp != "":
+                        final_df = filter_column(final_df, "Minimum Age Limit", age_inp)
 
-            with right_column_2:
-                valid_payments = ["Free", "Paid"]
-                pay_inp = formcheck.selectbox('Select Free or Paid 🆓 ', [""] + valid_payments)
-                if pay_inp != "":
-                    final_df = filter_column(final_df, "Fees", pay_inp)
-            
-            with right_column_2a:
-                valid_capacity = ["Available"]
-                cap_inp = formcheck.selectbox('Select Availablilty ❇️', [""] + valid_capacity)
-                if cap_inp != "":
-                    final_df = filter_capacity(final_df, "Available Capacity", 0)
-
-            with right_column_2b:
-                valid_vaccines = ["COVISHIELD", "COVAXIN"]
-                vaccine_inp = formcheck.selectbox('Select Vaccine💉', [""] + valid_vaccines)
-                if vaccine_inp != "":
-                    final_df = filter_column(final_df, "Vaccine", vaccine_inp)
-            check = formcheck.form_submit_button("CHECK ✔️")
-            if check:
-                table = deepcopy(final_df)
-                table.reset_index(inplace=True, drop=True)
-                st.write("\n")
-                st.subheader(" RESULT :📋 ")
-                st.write("\n\n")
-                st.write(table)
+                with right_column_2:
+                    valid_payments = ["Free", "Paid"]
+                    pay_inp = formcheck.selectbox('Select Free or Paid 🆓 ', [""] + valid_payments)
+                    if pay_inp != "":
+                        final_df = filter_column(final_df, "Fees", pay_inp)
                 
-        else:
-            formcheck.form_submit_button("CHECK ✔️")
-            st.error("THE API call limit has been reached , please try again after 5 minutes.")
+                with right_column_2a:
+                    valid_capacity = ["Available"]
+                    cap_inp = formcheck.selectbox('Select Availablilty ❇️', [""] + valid_capacity)
+                    if cap_inp != "":
+                        final_df = filter_capacity(final_df, "Available Capacity", 0)
 
+                with right_column_2b:
+                    valid_vaccines = ["COVISHIELD", "COVAXIN"]
+                    vaccine_inp = formcheck.selectbox('Select Vaccine💉', [""] + valid_vaccines)
+                    if vaccine_inp != "":
+                        final_df = filter_column(final_df, "Vaccine", vaccine_inp)
+                check = formcheck.form_submit_button("CHECK ✔️")
+                if check:
+                    table = deepcopy(final_df)
+                    table.reset_index(inplace=True, drop=True)
+                    st.write("\n")
+                    st.subheader(" RESULT :📋 ")
+                    st.write("\n\n")
+                    st.write(table)
+                    
+            else:
+                formcheck.form_submit_button("CHECK ✔️")
+                st.error("THE API call limit has been reached , please try again after 5 minutes.")
+        except Exception as e:
+            st.write(str(e))
 
         st.write("\n\n\n\n")
 
