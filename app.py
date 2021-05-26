@@ -176,8 +176,8 @@ def main():
                 'fee_type' : 'Fees'
                 }
 
-        for col in mapping_df:
-            st.write(col)
+        # for col in mapping_df:
+        #     st.write(col)
 
         valid_states = list(np.unique(mapping_df["state_name"].values))
 
