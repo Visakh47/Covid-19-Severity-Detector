@@ -59,7 +59,7 @@ def Pageviews():
     return []
 
 def main():
-    st.set_page_config(page_title="Covid 19 App", page_icon="https://www.cowin.gov.in/favicon.ico", layout='centered', initial_sidebar_state='collapsed')
+    st.set_page_config(page_title="Covid 19 App ⛑️", page_icon="notebooks/mask.png", layout='centered', initial_sidebar_state='collapsed')
     
     # Initialize connection.
     client = pymongo.MongoClient("mongodb+srv://visakh:feedbackforms@feedback.0r8bu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
@@ -101,7 +101,7 @@ def main():
     st.write('\n')
 
     activities=['Main Page', 'Admin Page']
-    option=st.sidebar.selectbox('Welcome To COVID Detector?',activities)
+    option=st.sidebar.selectbox('Welcome To COVID Detector',activities)
 
 
     symptoms_list = ['Breathing Problem','Fever','Dry Cough','Sore Throat','Running Nose','Asthma','Chronic Lung Disease','Headache','Heart Disease','Diabetes','Hyper Tension','Fatigue','Gastrointestinal','Abroad travel','Contact with COVID Patient','Attended Large Gathering','Visited Public Exposed Places','Family working inpublic exposed places']
@@ -187,7 +187,7 @@ def main():
 
 
         with center_column_1:
-            state_inp = formcheck.selectbox('Select State', [""] + valid_states)
+            state_inp = formcheck.selectbox('Select State🗺️', [""] + valid_states)
             if state_inp != "":
                 mapping_df = filter_column(mapping_df, "state_name", state_inp)
 
