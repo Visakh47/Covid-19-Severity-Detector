@@ -12,3 +12,5 @@ Check out the application here : [Covid Help App](http://65.0.130.4:8501/)
 * Add Tableau Implementation for Time Series 
 * ~~Add User Authentication with SQL~~
 * ~~Create Feedback form working with mongodb~~
+* ~~Add COWIN Vaccine Slot Checker ~~
+* Find solution for api call limit succedding 
