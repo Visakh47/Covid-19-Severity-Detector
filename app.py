@@ -34,6 +34,7 @@ sess = Session()
 
 model = pickle.load(open('RFmodel.pkl', 'rb'))
 
+@st.cache(allow_output_mutation=True, suppress_st_warning=True)
 def predict_covid(prediction_value):
     input = np.array([prediction_value])
     prediction = model.predict_proba(input)
@@ -46,10 +47,12 @@ def load_mapping():
     df = pd.read_csv("district_mappingnew.csv")
     return df
 
+@st.cache(allow_output_mutation=True, suppress_st_warning=True)
 def filter_column(df, col, value):
     df_temp = deepcopy(df.loc[df[col] == value, :])
     return df_temp
 
+@st.cache(allow_output_mutation=True, suppress_st_warning=True)
 def filter_capacity(df, col, value):
     df_temp = deepcopy(df.loc[df[col] > value, :])
     return df_temp
