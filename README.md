@@ -4,11 +4,11 @@ A Machine Learning model integrated with a front end interface using streamlit U
 Check out the application here : [Covid Help App](http://65.0.130.4:8501/)
 
 ## To Do :
-* Add Front End Interface [Priority] 
-* Find an API(Updated Every Day) for the dataset handling 
-* Add Helpul Guidances and Contact Informations
-* Implement Better MongoDB Table for viewing feedback
-* Create Analytics & Timseries with ARIMA Model 
-* Add Tableau Implementation
-* Add User Authentication with SQL
-* Create Feedback form working with mongodb 
+-[x] Add Front End Interface [Priority] 
+-[] Find an API(Updated Every Day) for the dataset handling 
+-[] Add Helpul Guidances and Contact Informations
+-[]Implement Better MongoDB Table for viewing feedback
+-[x]Create Analytics & Timseries of vaccination rateswith ARIMA Model 
+-[]Add Tableau Implementation for Timeseries 
+-[x] Add User Authentication with SQL
+-[x] Create Feedback form working with mongodb 
