@@ -11,7 +11,7 @@ import pandas as pd
 from copy import deepcopy
 from fake_useragent import UserAgent
 
-#for resetting state
+# #for resetting state
 session = SessionState.get(run_id=0)
 
 # browser_header = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36'}
@@ -46,6 +46,7 @@ def predict_covid(prediction_value):
 def load_mapping():
     df = pd.read_csv("district_mappingnew.csv")
     return df
+
 
 @st.cache(allow_output_mutation=True, suppress_st_warning=True)
 def filter_column(df, col, value):
@@ -93,22 +94,34 @@ def main():
 
 
 
-    st.title("COVID-19 Severity Prediction Model 🖥️")
-    # html_temp = """
-    # <div style="background-color:#FF0000 ;padding:3px">
-    # <h2 style="color:white;text-align:center;"> Covid 19 Severity Prediction </h2>
-    # </div>
-    # """
-    # st.markdown(html_temp, unsafe_allow_html=True)
+    st.title("COVID-19 Help App 🖥️")
+    st.markdown("""
+    <style>
+    .etitle {
+            font-family: "IBM Plex Sans", sans-serif;
+            font-weight: bold;
+            font-size: 25px;
+            color: rgb(250, 250, 250);
+            margin: 1.5rem 0px 0.5rem;
+            padding: 0.5em 0px 0.25em;
+            line-height: 1;
+            position: relative;
+            flex: 1 1 0%;    
+    }
+    </style>
+    """, unsafe_allow_html=True)
 
-    st.write('\n')
+    st.write('\n\n\n')
 
-    activities=['Main Page', 'Admin Page']
+    activities=['Main Page','CoWin Slot Checker','Admin Page']
     option=st.sidebar.selectbox('Welcome To COVID Detector',activities)
 
 
     symptoms_list = ['Breathing Problem','Fever','Dry Cough','Sore Throat','Running Nose','Asthma','Chronic Lung Disease','Headache','Heart Disease','Diabetes','Hyper Tension','Fatigue','Gastrointestinal','Abroad travel','Contact with COVID Patient','Attended Large Gathering','Visited Public Exposed Places','Family working inpublic exposed places']
     if option == 'Main Page':
+
+        st.markdown('<p class="etitle" style="font-size: 30px;">COVID-19 Severity Prediction Model 😷 </p>', unsafe_allow_html=True)
+        st.write('\n')
         st.subheader('Please Select The Applicable Properties: ✔️')
         symptoms = st.multiselect('',[*symptoms_list],key='symptoms')
         
@@ -152,17 +165,73 @@ def main():
 
 
 
+               
 
 
-    
-        st.title('CoWin Slot Availabilty💉 ')
+
+        st.markdown('<p class="etitle">State Helpline Numbers 💁🏻</p>', unsafe_allow_html=True)
+        # st.title('State Helpline Numbers 💁🏻')
+        dfh = pd.read_excel("model_csv/helplineNumbers.xlsx")
+        # st.dataframe(dfh)
+
+        # helplineNo = list(np.unique(dfh["HelplineNo"].values))
+        # st.write(helplineNo)
+        helpStates = dfh["State/UT"]
+        helplineNo = dfh["HelplineNo"]
+        # st.write(helpStates)
+        # st.write(helplineNo)
+        
+        st.write("\n")
+
+        
+        selectedState = st.selectbox("Select State 🗺️:", [""] + helpStates)
+        colh = st.beta_columns(2)
+        
+        st.write("\n")
+        st.write("\n")
+        colh[0].subheader("State")
+        colh[1].subheader("Helpline Numbers")
+        colh[0].write('\n')
+        colh[1].write('\n')
+        for i,j in zip(helpStates,helplineNo):
+            if selectedState == i:
+                colh[0].write(f'{i}')
+                colh[1].write(f'{j}')
+
+
+        st.write("\n\n\n\n")
+
+        st.write("\n\n\n\n")
+
+        st.subheader('Feedback Form ⚡')
+        form = st.form(key='my-form')
+        name_i = form.text_input('Enter your name 👦: ')
+        review_i = form.text_input('Were you satisifed with the prediction 😮 ?')
+        improve_i = form.text_input('What can we do to improve 🤔 ?')
+        submit = form.form_submit_button('Submit')
+
+        
+            
+
+        if submit and name_i and review_i and improve_i:
+                
+            try:
+                session.run_id += 1
+                push_data(name_i,review_i,improve_i)
+                st.success(f'Thank you {name_i} for the feedback 🥰 !, We are trying our best to improve the application :) ')
+            except Exception as e:
+                st.error('There seems to be some error 🤔 , please try again later :( ')
+
+
+    if option == 'CoWin Slot Checker':
+        st.markdown('<p class="etitle">CoWin Slot Availabilty 💉 </p>', unsafe_allow_html=True)
 
         st.write("\n\n")
 
         st.info("The CoWIN API's Requests are limited , Sometimes results may not come. Try again after 5 minutes 🌐 ")
 
         st.write("\n\n")
-      
+    
         
         mapping_df = load_mapping()
 
@@ -287,29 +356,7 @@ def main():
             formcheck.form_submit_button("CHECK ✔️")
             st.error("THE API call limit has been reached , please try again after 5 minutes.")
 
-
         st.write("\n\n\n\n")
-
-        st.subheader('Feedback Form ⚡')
-        form = st.form(key='my-form')
-        name_i = form.text_input('Enter your name 👦: ')
-        review_i = form.text_input('Were you satisifed with the prediction 😮 ?')
-        improve_i = form.text_input('What can we do to improve 🤔 ?')
-        submit = form.form_submit_button('Submit')
-
-        
-            
-
-        if submit and name_i and review_i and improve_i:
-                
-            try:
-                session.run_id += 1
-                push_data(name_i,review_i,improve_i)
-                st.success(f'Thank you {name_i} for the feedback 🥰 !, We are trying our best to improve the application :) ')
-            except Exception as e:
-                st.error('There seems to be some error 🤔 , please try again later :( ')
-
-
 
     
     if option == 'Admin Page':
@@ -354,15 +401,39 @@ def main():
                 q = 1
                 for feedback in feedbacks:
                     col1.write(q)
+                    col1.write("\n")
                     col2.write(feedback['name'])
+                    col2.write("\n")
                     col3.write(feedback['review'])
+                    col3.write("\n")
                     col4.write(feedback['improve']) 
+                    col4.write("\n")
                     q = q+1
             except Exception as e:
                 st.error('There seems to be some error 🤔 , please try again later :( ')
         else:    
             if f==1:
                 st.error('Wrong Username / Password !👽')
+
+    
+
+    st.write("\n")
+    st.write("\n")
+    st.write("\n")
+    st.write("\n")
+    st.write("\n")
+    st.write("\n")
+    navOptions= ["Home","Cowin Slot Checker","Analytics"]
+    my_expander = st.beta_expander("Quick Navigation Links", expanded=False)
+    selectedHome = my_expander.button(navOptions[0])
+    selectedCowin = my_expander.button(navOptions[1])
+    selectedAdmin = my_expander.button(navOptions[2])
+    if selectedHome :
+        option = "Main Page"
+    elif selectedCowin :
+        option = "Cowin Slot Checker"
+    elif selectedAdmin :
+        option = "Admin Page"
 
 if __name__=='__main__':
     main()
