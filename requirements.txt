@@ -12,3 +12,4 @@ fake-useragent
 htbuilder==0.3.0
 requests==2.23.0
 requests-aws4auth==1.0.1
+xlrd >= 1.00
