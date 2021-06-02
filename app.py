@@ -441,6 +441,7 @@ def main():
     if option == 'Analytics Dashboard':
         st.markdown('<p class="etitle" style="font-size:30px">Analytics Dashboard 💁🏻</p>', unsafe_allow_html=True)
         st.write("\n")
+        st.info("Best Viewed On Desktop , We are working on a better mobile experience")
         st.markdown('<p class="etitle" style="font-size:25px">Covid 19 Country Wise Case Visualization 🌎</p>', unsafe_allow_html=True)
         st.write("\n")
         st.write("\n")
