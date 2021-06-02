@@ -64,7 +64,7 @@ def Pageviews():
     return []
 
 def main():
-    st.set_page_config(page_title="Covid 19 App ⛑️", page_icon="notebooks/mask.png", layout='wide', initial_sidebar_state='expanded')
+    st.set_page_config(page_title="Covid 19 App ⛑️", page_icon="notebooks/mask.png", layout='centered', initial_sidebar_state='expanded')
     
     # Initialize connection.
     client = pymongo.MongoClient("mongodb+srv://visakh:feedbackforms@feedback.0r8bu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
@@ -233,7 +233,7 @@ def main():
 
         st.write("\n")
 
-        cols = st.beta_columns((1,1,4))
+        cols = st.beta_columns((1,1,4))  #4 for centered  , 8 for Wide
 
         if cols[1].button("Reset 🔄"):
             session.run_id += 1
@@ -470,7 +470,7 @@ def main():
 
 
         st.markdown("<style> @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap'); </style>", unsafe_allow_html=True)
-        st.markdown('<p class="etitle" style="font-size:30px">Analytics Dashboard 💁🏻</p>', unsafe_allow_html=True)
+        st.markdown('<p class="etitle" style="font-size:30px">Analytics Dashboard 📈</p>', unsafe_allow_html=True)
         st.write("\n")
         st.write("\n")
         st.info("Best Viewed On Desktop , We Are Working On A Better Mobile Experience")
@@ -481,14 +481,15 @@ def main():
         st.write("⛣ Number of Cases Worldwide")
         st.write("⛣ Number of Active Cases In Each Country")
         st.write("⛣ The Aggregrate of the Deaths Prevalent Country Wise")
-        st.markdown('<p class="dashtitle"> The Given Dashboard has been produced with the help of Tableau and the data has been updated as of 02/06</p>', unsafe_allow_html=True)
+        st.markdown('<p class="dashtitle"> </p>', unsafe_allow_html=True)
+        st.subheader("The Given Dashboard has been produced with the help of Tableau and the data has been updated as of 02/06")
         st.markdown('<p class="dashtitle"> <b> KEY INSIGHTS </b> </p>', unsafe_allow_html=True)
         st.markdown('<p class="dashtitle"> <ul> <li> At present, USA has the highest number of covid cases(32.9 M) as well as the highest number of deaths (0.58 M) </li>  <li> India still holds second position with 28.3 M covid cases and 0.33 M deaths </li> <li> While Brazil has 0.46 M deaths with 16.5 M covid cases.</li> <li>Greenland is marked as one of the safest place with 40 cases and 0 deaths.</li> </ul></p>', unsafe_allow_html=True)
-        st.markdown('<p class="dashtitle"> We Presently Have Two Filters for both daily & cumulative reports for all the metrics used, which is also reflected in the world map </p>', unsafe_allow_html=True)
+        st.subheader("We Presently Have Two Filters for both daily & cumulative reports for all the metrics used, which is also reflected in the world map")
         st.write("\n")
         st.write("\n")
-        components.html(tableau_covid_dash , width=1600, height=900 )
-        st.markdown('<p class="etitle" style="font-size:25px">Covid-19 Forecast Graph 📈 </p>', unsafe_allow_html=True)
+        components.html(tableau_covid_dash , width=1600, height=800 )
+        st.markdown('<p class="etitle" style="font-size:25px">Covid-19 Forecast Graph 🔮 </p>', unsafe_allow_html=True)
         st.write("\n")
         st.write("\n")
         st.subheader("The Below Interactive Dashboard Displays The Time Series Forecasting of the Confirmed Cases of COVID-19 ,Recovered Cases & Death Rates for Covid Cases")
@@ -499,7 +500,7 @@ def main():
         st.markdown('<p class="dashtitle"> The Given Dashboard has been produced with the help of Tableau and the data has been updated as of 02/06</p>', unsafe_allow_html=True)
         st.markdown('<p class="dashtitle"> <b> KEY INSIGHTS </b> </p>', unsafe_allow_html=True)
         st.markdown('<p class="dashtitle"> <ul> <li> Number of confirmed cases for next 3 months will be somewhere in the range of 27 M to 60 M.  </li>  <li> Number of recovered cases will also increase approximately upto 150 M with a death rate 1-2 % </li> </ul></p>', unsafe_allow_html=True)
-        st.markdown('<p class="dashtitle"> Don\'t get afraid by looking at the increasing number of covid cases, the recovery rate is also increasing. Doesn\'t mean you should take it leniently. Take proper precautions and possibly stay in your home. India is fighting, stay home and let us defeat corona 😁 </p>', unsafe_allow_html=True)
+        st.subheader("Don\'t get worried looking at the increasing number of covid cases, the recovery rate is also increasing. Doesn\'t mean you should take it leniently. Take proper precautions and possibly stay in your home. India is fighting, stay home and let us defeat corona 😁")
         st.write("\n")
         st.write("\n")
         components.html(tableau_covid_forecast , width=1600, height=900 )
