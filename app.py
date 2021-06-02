@@ -233,7 +233,7 @@ def main():
 
         st.write("\n")
 
-        cols = st.beta_columns((1,1,4))  #4 for centered  , 8 for Wide
+        cols = st.beta_columns((1,1,8))  #4 for centered  , 8 for Wide
 
         if cols[1].button("Reset 🔄"):
             session.run_id += 1
