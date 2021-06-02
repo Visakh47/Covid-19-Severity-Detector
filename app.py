@@ -64,7 +64,7 @@ def Pageviews():
     return []
 
 def main():
-    st.set_page_config(page_title="Covid 19 App ⛑️", page_icon="notebooks/mask.png", layout='centered', initial_sidebar_state='expanded')
+    st.set_page_config(page_title="Covid 19 App ⛑️", page_icon="notebooks/mask.png", layout='wide', initial_sidebar_state='expanded')
     
     # Initialize connection.
     client = pymongo.MongoClient("mongodb+srv://visakh:feedbackforms@feedback.0r8bu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
