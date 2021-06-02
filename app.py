@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit.components.v1 as components
 from streamlit import caching
 import pickle 
 import numpy as np
@@ -63,7 +64,7 @@ def Pageviews():
     return []
 
 def main():
-    st.set_page_config(page_title="Covid 19 App ⛑️", page_icon="notebooks/mask.png", layout='centered', initial_sidebar_state='collapsed')
+    st.set_page_config(page_title="Covid 19 App ⛑️", page_icon="notebooks/mask.png", layout='centered', initial_sidebar_state='expanded')
     
     # Initialize connection.
     client = pymongo.MongoClient("mongodb+srv://visakh:feedbackforms@feedback.0r8bu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
@@ -92,7 +93,7 @@ def main():
 
 
 
-
+    
 
     st.title("COVID-19 Help App 🖥️")
     st.markdown("""
@@ -111,9 +112,87 @@ def main():
     </style>
     """, unsafe_allow_html=True)
 
+    tableau_covid_dash = """ 
+                            <div class='tableauPlaceholder' id='viz1622650066687' style='position: relative'>
+   <noscript><a href='#'><img alt='Dashboard 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Co&#47;Covid_Dashboard_16226492198720&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript>
+   <object class='tableauViz'  style='display:none;'>
+      <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+      <param name='embed_code_version' value='3' />
+      <param name='site_root' value='' />
+      <param name='name' value='Covid_Dashboard_16226492198720&#47;Dashboard1' />
+      <param name='tabs' value='no' />
+      <param name='toolbar' value='yes' />
+      <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Co&#47;Covid_Dashboard_16226492198720&#47;Dashboard1&#47;1.png' />
+      <param name='animate_transition' value='yes' />
+      <param name='display_static_image' value='yes' />
+      <param name='display_spinner' value='yes' />
+      <param name='display_overlay' value='yes' />
+      <param name='display_count' value='yes' />
+      <param name='language' value='en-GB' />
+   </object>
+</div>
+            <script type='text/javascript'> 
+                var divElement = document.getElementById('viz1622650066687');          
+                var vizElement = divElement.getElementsByTagName('object')[0];
+                if (divElement.offsetWidth > 800) {
+                    vizElement.style.width = '1130px';
+                    vizElement.style.height = '727px';
+                } else if (divElement.offsetWidth > 500) {
+                    vizElement.style.width = '1130px';
+                    vizElement.style.height = '727px';
+                } else {
+                    vizElement.style.width = '100%';
+                    vizElement.style.height = '1527px';
+                }
+                var scriptElement = document.createElement('script');
+                scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+                vizElement.parentNode.insertBefore(scriptElement, vizElement);             
+            </script>
+                            """
+
+
+    tableau_covid_forecast = """ 
+        <div class='tableauPlaceholder' id='viz1622652929015' style='position: relative'>
+   <noscript><a href='#'><img alt='Dashboard 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Co&#47;Covid-19Forecast_16226528481210&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript>
+   <object class='tableauViz'  style='display:none;'>
+      <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+      <param name='embed_code_version' value='3' />
+      <param name='site_root' value='' />
+      <param name='name' value='Covid-19Forecast_16226528481210&#47;Dashboard1' />
+      <param name='tabs' value='no' />
+      <param name='toolbar' value='yes' />
+      <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Co&#47;Covid-19Forecast_16226528481210&#47;Dashboard1&#47;1.png' />
+      <param name='animate_transition' value='yes' />
+      <param name='display_static_image' value='yes' />
+      <param name='display_spinner' value='yes' />
+      <param name='display_overlay' value='yes' />
+      <param name='display_count' value='yes' />
+      <param name='language' value='en-GB' />
+   </object>
+</div>
+        <script type='text/javascript'>                
+                var divElement = document.getElementById('viz1622652929015'); 
+                var vizElement = divElement.getElementsByTagName('object')[0];
+                if (divElement.offsetWidth > 800) {
+                    vizElement.style.width = '1130px';
+                    vizElement.style.height = '727px';
+                } else if (divElement.offsetWidth > 500) {
+                    vizElement.style.width = '1130px';
+                    vizElement.style.height = '727px';
+                } else {
+                    vizElement.style.width = '100%';
+                    vizElement.style.height = '1527px';
+                }
+                var scriptElement = document.createElement('script');
+                scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+                vizElement.parentNode.insertBefore(scriptElement, vizElement);                
+        </script>
+                                """
+    
+
     st.write('\n\n\n')
 
-    activities=['Main Page','CoWin Slot Checker','Admin Page']
+    activities=['Main Page','CoWin Slot Checker','Analytics Dashboard','Admin Page']
     option=st.sidebar.selectbox('Welcome To COVID Detector',activities)
 
 
@@ -358,6 +437,20 @@ def main():
 
         st.write("\n\n\n\n")
 
+
+    if option == 'Analytics Dashboard':
+        st.markdown('<p class="etitle" style="font-size:30px">Analytics Dashboard 💁🏻</p>', unsafe_allow_html=True)
+        st.write("\n")
+        st.markdown('<p class="etitle" style="font-size:25px">Covid 19 Country Wise Case Visualization 💁🏻</p>', unsafe_allow_html=True)
+        st.write("\n")
+        st.write("\n")
+        st.write("\n")
+        components.html(tableau_covid_dash , width=1600, height=900 )
+        st.subheader("Covid-19 Forecast Graph")
+        st.write("\n")
+        st.write("\n")
+        st.write("\n")
+        components.html(tableau_covid_forecast , width=1600, height=900 )
     
     if option == 'Admin Page':
       
