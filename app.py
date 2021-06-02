@@ -482,7 +482,7 @@ def main():
         st.write("⛣ Number of Active Cases In Each Country")
         st.write("⛣ The Aggregrate of the Deaths Prevalent Country Wise")
         st.markdown('<p class="dashtitle"> </p>', unsafe_allow_html=True)
-        st.subheader("The Given Dashboard has been produced with the help of Tableau and the data has been updated as of 02/06")
+        st.subheader("The Given Dashboard has been produced with the help of Tableau and the data has been updated as of 02/06/21")
         st.markdown('<p class="dashtitle"> <b> KEY INSIGHTS </b> </p>', unsafe_allow_html=True)
         st.markdown('<p class="dashtitle"> <ul> <li> At present, USA has the highest number of covid cases(32.9 M) as well as the highest number of deaths (0.58 M) </li>  <li> India still holds second position with 28.3 M covid cases and 0.33 M deaths </li> <li> While Brazil has 0.46 M deaths with 16.5 M covid cases.</li> <li>Greenland is marked as one of the safest place with 40 cases and 0 deaths.</li> </ul></p>', unsafe_allow_html=True)
         st.subheader("We Presently Have Two Filters for both daily & cumulative reports for all the metrics used, which is also reflected in the world map")
