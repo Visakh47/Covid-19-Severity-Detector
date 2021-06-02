@@ -192,12 +192,12 @@ def main():
 
     st.write('\n\n\n')
 
-    activities=['Main Page','CoWin Slot Checker','Analytics Dashboard','Admin Page']
+    activities=['Home','CoWin Slot Checker','Analytics Dashboard','Admin']
     option=st.sidebar.selectbox('Welcome To COVID Detector',activities)
 
 
     symptoms_list = ['Breathing Problem','Fever','Dry Cough','Sore Throat','Running Nose','Asthma','Chronic Lung Disease','Headache','Heart Disease','Diabetes','Hyper Tension','Fatigue','Gastrointestinal','Abroad travel','Contact with COVID Patient','Attended Large Gathering','Visited Public Exposed Places','Family working inpublic exposed places']
-    if option == 'Main Page':
+    if option == 'Home':
 
         st.markdown('<p class="etitle" style="font-size: 30px;">COVID-19 Severity Prediction Model 😷 </p>', unsafe_allow_html=True)
         st.write('\n')
@@ -452,7 +452,7 @@ def main():
         st.write("\n")
         components.html(tableau_covid_forecast , width=1600, height=900 )
     
-    if option == 'Admin Page':
+    if option == 'Admin':
       
         caching.clear_cache()
         
@@ -522,11 +522,11 @@ def main():
     selectedCowin = my_expander.button(navOptions[1])
     selectedAdmin = my_expander.button(navOptions[2])
     if selectedHome :
-        option = "Main Page"
+        option = "Home"
     elif selectedCowin :
         option = "Cowin Slot Checker"
     elif selectedAdmin :
-        option = "Admin Page"
+        option = "Admin"
 
 if __name__=='__main__':
     main()
