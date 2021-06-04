@@ -202,7 +202,47 @@ def main():
                 vizElement.parentNode.insertBefore(scriptElement, vizElement);                
         </script>
                                 """
+
+    tableau_covid_brc = """ 
+        
+    <div class='tableauPlaceholder' id='viz1622822276953' style='position: relative'>
+   <noscript><a href='#'><img alt='Dashboard 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ba&#47;Bar_Race_Chart&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript>
+   <object class='tableauViz'  style='display:none;'>
+      <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+      <param name='embed_code_version' value='3' />
+      <param name='site_root' value='' />
+      <param name='name' value='Bar_Race_Chart&#47;Dashboard1' />
+      <param name='tabs' value='no' />
+      <param name='toolbar' value='yes' />
+      <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ba&#47;Bar_Race_Chart&#47;Dashboard1&#47;1.png' />
+      <param name='animate_transition' value='yes' />
+      <param name='display_static_image' value='yes' />
+      <param name='display_spinner' value='yes' />
+      <param name='display_overlay' value='yes' />
+      <param name='display_count' value='yes' />
+      <param name='language' value='en-GB' />
+   </object>
+</div>
+        <script type='text/javascript'>  
+                var divElement = document.getElementById('viz1622822276953');    
+                var vizElement = divElement.getElementsByTagName('object')[0];
+                if (divElement.offsetWidth > 800) {
+                    vizElement.style.width = '1130px';
+                    vizElement.style.height = '727px';
+                } else if (divElement.offsetWidth > 500) {
+                    vizElement.style.width = '1130px';
+                    vizElement.style.height = '727px';
+                } else {
+                    vizElement.style.width = '100%';
+                    vizElement.style.height = '1527px';
+                }
+                var scriptElement = document.createElement('script');
+                scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+                vizElement.parentNode.insertBefore(scriptElement, vizElement);    
+         </script>
     
+    
+    """
 
     st.write('\n\n\n')
 
@@ -509,9 +549,17 @@ def main():
         st.write("\n")
         components.html(tableau_covid_forecast , width=1600, height=800 )
 
+        st.markdown('<p class="etitle" style="font-size:25px">Covid-19 Bar Race Chart </p>', unsafe_allow_html=True)
+        st.write("\n")
+        st.write("\n")
+        st.subheader("Below Bar Race Chart shows the number of covid cases found on each day and plots values of the topmost 10 countries")
+        st.write("\n")
+        st.write("\n")
+        components.html(tableau_covid_brc , width=1600, height=800 )
+
         
 
-        st.markdown('<p class="etitle" style="font-size:25px">Forecasting Vaccination Rate Using Arima Model 💉 </p>', unsafe_allow_html=True)
+        st.markdown('<p class="etitle" style="font-size:25px">Forecasting Vaccination Rate Using ARIMA Model 💉 </p>', unsafe_allow_html=True)
         st.write("\n")
         st.write("\n")
 
