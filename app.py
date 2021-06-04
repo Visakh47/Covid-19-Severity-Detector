@@ -8,6 +8,9 @@ import SessionState
 import datetime
 import json
 import requests
+from pmdarima import auto_arima
+import matplotlib.pyplot as plt
+import plotly.graph_objs as go
 import pandas as pd
 from copy import deepcopy
 from fake_useragent import UserAgent
@@ -34,6 +37,7 @@ sess = Session()
 #Loading the model in read mode
 
 model = pickle.load(open('RFmodel.pkl', 'rb'))
+# fit = pickle.load(open('arimaModel.pkl', 'rb'))
 
 @st.cache(allow_output_mutation=True, suppress_st_warning=True)
 def predict_covid(prediction_value):
@@ -503,8 +507,40 @@ def main():
         st.subheader("Don\'t get worried looking at the increasing number of covid cases, the recovery rate is also increasing. Doesn\'t mean you should take it leniently. Take proper precautions and possibly stay in your home. India is fighting, stay home and let us defeat corona 😁")
         st.write("\n")
         st.write("\n")
-        components.html(tableau_covid_forecast , width=1600, height=900 )
-    
+        components.html(tableau_covid_forecast , width=1600, height=800 )
+
+        
+
+        st.markdown('<p class="etitle" style="font-size:25px">Forecasting Vaccination Rate Using Arima Model 💉 </p>', unsafe_allow_html=True)
+        st.write("\n")
+        st.write("\n")
+
+        days = st.number_input(label='Enter no. of days for forecasting vaccination rate',min_value=15,value=15,step=1,format="%i")
+        days = int(days)
+        st.write("\n")
+        st.write("\n")
+        dfv = pd.read_csv("vaccination.csv",index_col='Updated On',parse_dates=True)
+        fit = auto_arima(dfv["First Dose Administered"], trace = True, suppress_warnings = True)
+        first_dose = dfv["First Dose Administered"].values
+        f, confint = fit.predict(n_periods = days, return_conf_int=True)
+        f_index = np.arange(len(first_dose), len(first_dose)+ days)
+
+        forecast = pd.Series(f, index = f_index)
+        ls = pd.Series(confint[:, 0], index = f_index)
+        us = pd.Series(confint[:, 1], index = f_index)
+
+        st.subheader(f"The Forecast of the next {days} days is as such :")
+        st.write("\n")
+        st.write("\n")
+        fig = plt.figure(figsize = (6,6))
+        plt.plot(first_dose)
+        plt.plot(forecast, color='green')
+        plt.fill_between(ls.index, ls, us, alpha=0.5, facecolor='green')
+        plt.title("Forecast", color='white',size=15)
+        plt.xlabel("Number of days", color='white',size=15)
+        plt.ylabel("Rate", color='white',size=15)
+        st.plotly_chart(fig)
+
     if option == 'Admin':
       
         caching.clear_cache()
