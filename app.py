@@ -247,8 +247,19 @@ def main():
     st.write('\n\n\n')
 
     activities=['Home','CoWin Slot Checker','Analytics Dashboard','Admin']
-    option=st.sidebar.selectbox('Welcome To COVID Detector',activities)
-
+    option=st.sidebar.selectbox('Menu Navigation',activities)
+    st.sidebar.write("\n")
+    st.sidebar.title("About The Creators")
+    st.sidebar.write("\n")
+    st.sidebar.info(
+        """
+        This Application was developed by  **Visakh Bobby** [[LinkedIn]](https://www.linkedin.com/in/visakh-bobby/) & **Poonam Deshmukh** [[LinkedIn]](https://www.linkedin.com/in/poonam-deshmukh/) in lieu of the pandemic situation that has rendered everyone speechless. 
+        The app aims to provide a way to check if your symptoms are covid-like with our prediction model , 
+        access state helpline numbers , check for available vaccination slots in your locality 
+        or even check out the current trend of the pandemic in the analytics dashboard. 
+        We have also included a feedback form that you could fill out so we could improve upon the application even further !
+        """
+    )
 
     symptoms_list = ['Breathing Problem','Fever','Dry Cough','Sore Throat','Running Nose','Asthma','Chronic Lung Disease','Headache','Heart Disease','Diabetes','Hyper Tension','Fatigue','Gastrointestinal','Abroad travel','Contact with COVID Patient','Attended Large Gathering','Visited Public Exposed Places','Family working inpublic exposed places']
     if option == 'Home':
@@ -402,7 +413,7 @@ def main():
 
 
         with center_column_1:
-            state_inp = formcheck.selectbox('Select State🗺️', [""] + valid_states)
+            state_inp = formcheck.selectbox('Select State 🗺️', [""] + valid_states)
             if state_inp != "":
                 mapping_df = filter_column(mapping_df, "state_name", state_inp)
 
@@ -549,7 +560,7 @@ def main():
         st.write("\n")
         components.html(tableau_covid_forecast , width=1600, height=800 )
 
-        st.markdown('<p class="etitle" style="font-size:25px">Covid-19 Bar Race Chart </p>', unsafe_allow_html=True)
+        st.markdown('<p class="etitle" style="font-size:25px">Covid-19 Bar Race Chart 📊  </p>', unsafe_allow_html=True)
         st.write("\n")
         st.write("\n")
         st.subheader("Below Bar Race Chart shows the number of covid cases found on each day and plots values of the topmost 10 countries")
@@ -563,7 +574,7 @@ def main():
         st.write("\n")
         st.write("\n")
 
-        days = st.number_input(label='Enter no. of days for forecasting vaccination rate',min_value=15,value=15,step=1,format="%i")
+        days = st.number_input(label='Enter no. of days for forecasting vaccination rate (India Dataset)',min_value=15,value=15,step=1,format="%i")
         days = int(days)
         st.write("\n")
         st.write("\n")
@@ -586,7 +597,7 @@ def main():
         plt.fill_between(ls.index, ls, us, alpha=0.5, facecolor='green')
         plt.title("Forecast", color='white',size=15)
         plt.xlabel("Number of days", color='white',size=15)
-        plt.ylabel("Rate", color='white',size=15)
+        plt.ylabel("Rate of vaccinations", color='white',size=15)
         st.plotly_chart(fig)
 
     if option == 'Admin':
@@ -647,23 +658,23 @@ def main():
 
     
 
-    st.write("\n")
-    st.write("\n")
-    st.write("\n")
-    st.write("\n")
-    st.write("\n")
-    st.write("\n")
-    navOptions= ["Home","Cowin Slot Checker","Analytics"]
-    my_expander = st.beta_expander("Quick Navigation Links", expanded=False)
-    selectedHome = my_expander.button(navOptions[0])
-    selectedCowin = my_expander.button(navOptions[1])
-    selectedAdmin = my_expander.button(navOptions[2])
-    if selectedHome :
-        option = "Home"
-    elif selectedCowin :
-        option = "Cowin Slot Checker"
-    elif selectedAdmin :
-        option = "Admin"
+    # st.write("\n")
+    # st.write("\n")
+    # st.write("\n")
+    # st.write("\n")
+    # st.write("\n")
+    # st.write("\n")
+    # navOptions= ["Home","Cowin Slot Checker","Analytics"]
+    # my_expander = st.beta_expander("Quick Navigation Links", expanded=False)
+    # selectedHome = my_expander.button(navOptions[0])
+    # selectedCowin = my_expander.button(navOptions[1])
+    # selectedAdmin = my_expander.button(navOptions[2])
+    # if selectedHome :
+    #     option = "Home"
+    # elif selectedCowin :
+    #     option = "Cowin Slot Checker"
+    # elif selectedAdmin :
+    #     option = "Admin"
 
 if __name__=='__main__':
     main()
