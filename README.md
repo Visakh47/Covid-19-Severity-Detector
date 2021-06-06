@@ -6,10 +6,10 @@ Check out the application here : [Covid Help App](http://65.0.130.4:8501/)
 ## To Do :
 * ~~Add Front End Interface [Priority]~~ 
 * Find an API(Updated Every Day) for the dataset handling 
-* Add Helpul Guidances and Contact Informations
-* Implement Better MongoDB Table for viewing feedback
+* ~~Add Helpul Guidances and Contact Informations~~
+* Implement Better MongoDB Table for viewing feedback~
 * ~~Create Analytics & Timseries for vaccination rates with ARIMA Model~~
-* Add Tableau Implementation for Time Series 
+* ~~Add Tableau Implementation for Time Series~~
 * ~~Add User Authentication with SQL~~
 * ~~Create Feedback form working with mongodb~~
 * ~~Add COWIN Vaccine Slot Checker~~
