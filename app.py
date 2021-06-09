@@ -665,25 +665,6 @@ def main():
             if f==1:
                 st.error('Wrong Username / Password !👽')
 
-    
-
-    # st.write("\n")
-    # st.write("\n")
-    # st.write("\n")
-    # st.write("\n")
-    # st.write("\n")
-    # st.write("\n")
-    # navOptions= ["Home","Cowin Slot Checker","Analytics"]
-    # my_expander = st.beta_expander("Quick Navigation Links", expanded=False)
-    # selectedHome = my_expander.button(navOptions[0])
-    # selectedCowin = my_expander.button(navOptions[1])
-    # selectedAdmin = my_expander.button(navOptions[2])
-    # if selectedHome :
-    #     option = "Home"
-    # elif selectedCowin :
-    #     option = "Cowin Slot Checker"
-    # elif selectedAdmin :
-    #     option = "Admin"
 
 if __name__=='__main__':
     main()
