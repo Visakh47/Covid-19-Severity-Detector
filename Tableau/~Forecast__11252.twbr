@@ -1,0 +1,813 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20211.21.0511.0935                               -->
+<workbook source-build='2021.1.2 (20211.21.0511.0935)' source-platform='win' version='18.1' xml:base='https://public.tableau.com' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AutoCreateAndUpdateDSDPhoneLayouts />
+    <_.fcp.MarkAnimation.true...MarkAnimation />
+    <_.fcp.ObjectModelEncapsulateLegacy.true...ObjectModelEncapsulateLegacy />
+    <_.fcp.ObjectModelExtractV2.true...ObjectModelExtractV2 />
+    <_.fcp.ObjectModelTableType.true...ObjectModelTableType />
+    <_.fcp.SchemaViewerObjectModel.true...SchemaViewerObjectModel />
+    <_.fcp.SetMembershipControl.true...SetMembershipControl />
+    <SheetIdentifierTracking />
+    <SortTagCleanup />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <repository-location id='Covid-19Forecast_16226528481210' path='/workbooks' revision='1.0' />
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='Covid-19 Dataset' inline='true' name='federated.1i23pg81pzzcyk1cayku71r3hzam' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='Covid-19 Dataset' name='textscan.13r1zk00xdl0wf0zp1kyx0swv34e'>
+            <connection class='textscan' directory='C:/Users/Vk_57/Desktop/Covid-19-Severity-Detector/model_csv' filename='Covid-19 Dataset.csv' password='' server='' workgroup-auth-mode='as-is' />
+          </named-connection>
+        </named-connections>
+        <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='textscan.13r1zk00xdl0wf0zp1kyx0swv34e' name='Covid-19 Dataset.csv' table='[Covid-19 Dataset#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_IN' separator=','>
+            <column datatype='string' name='Country' ordinal='0' />
+            <column datatype='date' name='Date' ordinal='1' />
+            <column datatype='integer' name='Confirmed' ordinal='2' />
+            <column datatype='integer' name='Recovered' ordinal='3' />
+            <column datatype='integer' name='Deaths' ordinal='4' />
+            <column datatype='integer' name='Active Cases' ordinal='5' />
+            <column datatype='real' name='Death Rate(%)' ordinal='6' />
+            <column datatype='integer' name='Increase' ordinal='7' />
+            <column datatype='date' name='FirstDays' ordinal='8' />
+            <column datatype='integer' name='day_xth' ordinal='9' />
+            <column datatype='integer' name='Population_1k' ordinal='10' />
+            <column datatype='date' name='TenCase' ordinal='11' />
+            <column datatype='real' name='Cases/1000s' ordinal='12' />
+          </columns>
+        </_.fcp.ObjectModelEncapsulateLegacy.false...relation>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...relation connection='textscan.13r1zk00xdl0wf0zp1kyx0swv34e' name='Covid-19 Dataset.csv' table='[Covid-19 Dataset#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_IN' separator=','>
+            <column datatype='string' name='Country' ordinal='0' />
+            <column datatype='date' name='Date' ordinal='1' />
+            <column datatype='integer' name='Confirmed' ordinal='2' />
+            <column datatype='integer' name='Recovered' ordinal='3' />
+            <column datatype='integer' name='Deaths' ordinal='4' />
+            <column datatype='integer' name='Active Cases' ordinal='5' />
+            <column datatype='real' name='Death Rate(%)' ordinal='6' />
+            <column datatype='integer' name='Increase' ordinal='7' />
+            <column datatype='date' name='FirstDays' ordinal='8' />
+            <column datatype='integer' name='day_xth' ordinal='9' />
+            <column datatype='integer' name='Population_1k' ordinal='10' />
+            <column datatype='date' name='TenCase' ordinal='11' />
+            <column datatype='real' name='Cases/1000s' ordinal='12' />
+          </columns>
+        </_.fcp.ObjectModelEncapsulateLegacy.true...relation>
+        <refresh increment-key='' incremental-updates='false' />
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[Covid-19 Dataset.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_GB&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;Rs&quot;</attribute>
+              <attribute datatype='string' name='debit-close-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='debit-open-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_IN&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Country</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Country]</local-name>
+            <parent-name>[Covid-19 Dataset.csv]</parent-name>
+            <remote-alias>Country</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Covid-19 Dataset.csv_958FB4B963AC44A6A12FEFA6279B6668]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Date</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[Date]</local-name>
+            <parent-name>[Covid-19 Dataset.csv]</parent-name>
+            <remote-alias>Date</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Covid-19 Dataset.csv_958FB4B963AC44A6A12FEFA6279B6668]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Confirmed</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Confirmed]</local-name>
+            <parent-name>[Covid-19 Dataset.csv]</parent-name>
+            <remote-alias>Confirmed</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Covid-19 Dataset.csv_958FB4B963AC44A6A12FEFA6279B6668]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Recovered</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Recovered]</local-name>
+            <parent-name>[Covid-19 Dataset.csv]</parent-name>
+            <remote-alias>Recovered</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Covid-19 Dataset.csv_958FB4B963AC44A6A12FEFA6279B6668]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Deaths</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Deaths]</local-name>
+            <parent-name>[Covid-19 Dataset.csv]</parent-name>
+            <remote-alias>Deaths</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Covid-19 Dataset.csv_958FB4B963AC44A6A12FEFA6279B6668]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Active Cases</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Active Cases]</local-name>
+            <parent-name>[Covid-19 Dataset.csv]</parent-name>
+            <remote-alias>Active Cases</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Covid-19 Dataset.csv_958FB4B963AC44A6A12FEFA6279B6668]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Death Rate(%)</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Death Rate(%)]</local-name>
+            <parent-name>[Covid-19 Dataset.csv]</parent-name>
+            <remote-alias>Death Rate(%)</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Covid-19 Dataset.csv_958FB4B963AC44A6A12FEFA6279B6668]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Increase</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Increase]</local-name>
+            <parent-name>[Covid-19 Dataset.csv]</parent-name>
+            <remote-alias>Increase</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Covid-19 Dataset.csv_958FB4B963AC44A6A12FEFA6279B6668]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>FirstDays</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[FirstDays]</local-name>
+            <parent-name>[Covid-19 Dataset.csv]</parent-name>
+            <remote-alias>FirstDays</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Covid-19 Dataset.csv_958FB4B963AC44A6A12FEFA6279B6668]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>day_xth</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[day_xth]</local-name>
+            <parent-name>[Covid-19 Dataset.csv]</parent-name>
+            <remote-alias>day_xth</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Covid-19 Dataset.csv_958FB4B963AC44A6A12FEFA6279B6668]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Population_1k</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Population_1k]</local-name>
+            <parent-name>[Covid-19 Dataset.csv]</parent-name>
+            <remote-alias>Population_1k</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Covid-19 Dataset.csv_958FB4B963AC44A6A12FEFA6279B6668]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>TenCase</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[TenCase]</local-name>
+            <parent-name>[Covid-19 Dataset.csv]</parent-name>
+            <remote-alias>TenCase</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Covid-19 Dataset.csv_958FB4B963AC44A6A12FEFA6279B6668]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Cases/1000s</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Cases/1000s]</local-name>
+            <parent-name>[Covid-19 Dataset.csv]</parent-name>
+            <remote-alias>Cases/1000s</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Covid-19 Dataset.csv_958FB4B963AC44A6A12FEFA6279B6668]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column datatype='string' name='[Country]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+      <column caption='First Days' datatype='date' name='[FirstDays]' role='dimension' type='ordinal' />
+      <column caption='Population 1k' datatype='integer' name='[Population_1k]' role='measure' type='quantitative' />
+      <column caption='Ten Case' datatype='date' name='[TenCase]' role='dimension' type='ordinal' />
+      <_.fcp.ObjectModelTableType.true...column caption='Covid-19 Dataset.csv' datatype='table' name='[__tableau_internal_object_id__].[Covid-19 Dataset.csv_958FB4B963AC44A6A12FEFA6279B6668]' role='measure' type='quantitative' />
+      <column caption='Day Xth' datatype='integer' name='[day_xth]' role='dimension' type='quantitative' />
+      <column-instance column='[Forecast Indicator]' derivation='None' forecast-column-base='[Forecast Indicator]' forecast-column-type='forecast-indicator' name='[none:Forecast Indicator:nk]' pivot='key' type='nominal' />
+      <extract _.fcp.ObjectModelExtractV2.true...object-id='' count='-1' enabled='true' units='records'>
+        <connection access_mode='readonly' authentication='auth-none' author-locale='en_US' class='hyper' dbname='C:/Users/Vk_57/Desktop/Covid-19-Severity-Detector/model_csv/Covid-19 Dataset.hyper' default-settings='yes' schema='Extract' sslmode='' tablename='Extract' update-time='' username='tableau_internal_user'>
+          <_.fcp.ObjectModelEncapsulateLegacy.false...relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <_.fcp.ObjectModelEncapsulateLegacy.true...relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>Country</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[Country]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Country</remote-alias>
+              <ordinal>0</ordinal>
+              <family>Covid-19 Dataset.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>1</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Date</remote-name>
+              <remote-type>133</remote-type>
+              <local-name>[Date]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Date</remote-alias>
+              <ordinal>1</ordinal>
+              <family>Covid-19 Dataset.csv</family>
+              <local-type>date</local-type>
+              <aggregation>Year</aggregation>
+              <approx-count>487</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Confirmed</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[Confirmed]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Confirmed</remote-alias>
+              <ordinal>2</ordinal>
+              <family>Covid-19 Dataset.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>448</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Recovered</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[Recovered]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Recovered</remote-alias>
+              <ordinal>3</ordinal>
+              <family>Covid-19 Dataset.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>431</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Deaths</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[Deaths]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Deaths</remote-alias>
+              <ordinal>4</ordinal>
+              <family>Covid-19 Dataset.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>428</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Active Cases</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[Active Cases]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Active Cases</remote-alias>
+              <ordinal>5</ordinal>
+              <family>Covid-19 Dataset.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>447</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Death Rate(%)</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[Death Rate(%)]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Death Rate(%)</remote-alias>
+              <ordinal>6</ordinal>
+              <family>Covid-19 Dataset.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>437</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Increase</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[Increase]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Increase</remote-alias>
+              <ordinal>7</ordinal>
+              <family>Covid-19 Dataset.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>438</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>FirstDays</remote-name>
+              <remote-type>133</remote-type>
+              <local-name>[FirstDays]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>FirstDays</remote-alias>
+              <ordinal>8</ordinal>
+              <family>Covid-19 Dataset.csv</family>
+              <local-type>date</local-type>
+              <aggregation>Year</aggregation>
+              <approx-count>1</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>day_xth</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[day_xth]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>day_xth</remote-alias>
+              <ordinal>9</ordinal>
+              <family>Covid-19 Dataset.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>479</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Population_1k</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[Population_1k]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Population_1k</remote-alias>
+              <ordinal>10</ordinal>
+              <family>Covid-19 Dataset.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>1</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>TenCase</remote-name>
+              <remote-type>133</remote-type>
+              <local-name>[TenCase]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>TenCase</remote-alias>
+              <ordinal>11</ordinal>
+              <family>Covid-19 Dataset.csv</family>
+              <local-type>date</local-type>
+              <aggregation>Year</aggregation>
+              <approx-count>1</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Cases/1000s</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[Cases/1000s]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Cases/1000s</remote-alias>
+              <ordinal>12</ordinal>
+              <family>Covid-19 Dataset.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>448</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:Forecast Indicator:nk]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;Actual&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;Estimate&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;India&quot;' />
+      </semantic-values>
+      <default-sorts>
+        <manual-sort column='[none:Forecast Indicator:nk]' direction='ASC'>
+          <dictionary>
+            <bucket>&quot;Actual&quot;</bucket>
+            <bucket>&quot;Estimate&quot;</bucket>
+          </dictionary>
+        </manual-sort>
+      </default-sorts>
+      <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+        <objects>
+          <object caption='Covid-19 Dataset.csv' id='Covid-19 Dataset.csv_958FB4B963AC44A6A12FEFA6279B6668'>
+            <properties context=''>
+              <relation connection='textscan.13r1zk00xdl0wf0zp1kyx0swv34e' name='Covid-19 Dataset.csv' table='[Covid-19 Dataset#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='en_IN' separator=','>
+                  <column datatype='string' name='Country' ordinal='0' />
+                  <column datatype='date' name='Date' ordinal='1' />
+                  <column datatype='integer' name='Confirmed' ordinal='2' />
+                  <column datatype='integer' name='Recovered' ordinal='3' />
+                  <column datatype='integer' name='Deaths' ordinal='4' />
+                  <column datatype='integer' name='Active Cases' ordinal='5' />
+                  <column datatype='real' name='Death Rate(%)' ordinal='6' />
+                  <column datatype='integer' name='Increase' ordinal='7' />
+                  <column datatype='date' name='FirstDays' ordinal='8' />
+                  <column datatype='integer' name='day_xth' ordinal='9' />
+                  <column datatype='integer' name='Population_1k' ordinal='10' />
+                  <column datatype='date' name='TenCase' ordinal='11' />
+                  <column datatype='real' name='Cases/1000s' ordinal='12' />
+                </columns>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='Extract' table='[Extract].[Extract]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Sheet 1'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontcolor='#000000'>Confirmed Cases</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Covid-19 Dataset' name='federated.1i23pg81pzzcyk1cayku71r3hzam' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1i23pg81pzzcyk1cayku71r3hzam'>
+            <column datatype='integer' name='[Confirmed]' role='measure' type='quantitative' />
+            <column datatype='date' name='[Date]' role='dimension' type='ordinal' />
+            <column-instance column='[Confirmed]' derivation='Sum' forecast-column-base='[sum:Confirmed:qk]' forecast-column-type='forecast-value' name='[fVal:sum:Confirmed:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Forecast Indicator]' derivation='None' forecast-column-base='[Forecast Indicator]' forecast-column-type='forecast-indicator' name='[none:Forecast Indicator:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Confirmed]' derivation='Sum' name='[sum:Confirmed:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Date]' derivation='Day-Trunc' name='[tdy:Date:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='title' class='0' field='[federated.1i23pg81pzzcyk1cayku71r3hzam].[tdy:Date:qk]' scope='cols' value='Day' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.1i23pg81pzzcyk1cayku71r3hzam].[none:Forecast Indicator:nk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.1i23pg81pzzcyk1cayku71r3hzam].[fVal:sum:Confirmed:qk]</rows>
+        <cols>[federated.1i23pg81pzzcyk1cayku71r3hzam].[tdy:Date:qk]</cols>
+        <forecast-specification auto-forecast-agg='true' band-confidence-level='95.000000' enabled='true' fill-type='fill-missing' ignore-last='1' model-type='auto-season' range-periods='Month-Trunc' range-size='3' range-type='next' show-prediction-bands='true' />
+      </table>
+      <simple-id uuid='{29395F6C-E462-480A-BF61-C08D7550FCCD}' />
+    </worksheet>
+    <worksheet name='Sheet 2'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontcolor='#000000'>Death Rate</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Covid-19 Dataset' name='federated.1i23pg81pzzcyk1cayku71r3hzam' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1i23pg81pzzcyk1cayku71r3hzam'>
+            <column datatype='date' name='[Date]' role='dimension' type='ordinal' />
+            <column datatype='real' name='[Death Rate(%)]' role='measure' type='quantitative' />
+            <column-instance column='[Death Rate(%)]' derivation='Sum' forecast-column-base='[sum:Death Rate(%):qk]' forecast-column-type='forecast-value' name='[fVal:sum:Death Rate(%):qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Forecast Indicator]' derivation='None' forecast-column-base='[Forecast Indicator]' forecast-column-type='forecast-indicator' name='[none:Forecast Indicator:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Death Rate(%)]' derivation='Sum' name='[sum:Death Rate(%):qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Date]' derivation='Day-Trunc' name='[tdy:Date:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='title' class='0' field='[federated.1i23pg81pzzcyk1cayku71r3hzam].[tdy:Date:qk]' scope='cols' value='Day' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.1i23pg81pzzcyk1cayku71r3hzam].[none:Forecast Indicator:nk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.1i23pg81pzzcyk1cayku71r3hzam].[fVal:sum:Death Rate(%):qk]</rows>
+        <cols>[federated.1i23pg81pzzcyk1cayku71r3hzam].[tdy:Date:qk]</cols>
+        <forecast-specification auto-forecast-agg='true' band-confidence-level='95.000000' enabled='true' fill-type='fill-missing' ignore-last='1' model-type='auto-season' range-periods='Month-Trunc' range-size='3' range-type='next' show-prediction-bands='true' />
+      </table>
+      <simple-id uuid='{61EAF769-09E4-42A0-BF34-C7013CFE34B8}' />
+    </worksheet>
+    <worksheet name='Sheet 3'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontcolor='#000000'>Recovered Cases</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Covid-19 Dataset' name='federated.1i23pg81pzzcyk1cayku71r3hzam' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1i23pg81pzzcyk1cayku71r3hzam'>
+            <column datatype='date' name='[Date]' role='dimension' type='ordinal' />
+            <column datatype='integer' name='[Recovered]' role='measure' type='quantitative' />
+            <column-instance column='[Recovered]' derivation='Sum' forecast-column-base='[sum:Recovered:qk]' forecast-column-type='forecast-value' name='[fVal:sum:Recovered:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Forecast Indicator]' derivation='None' forecast-column-base='[Forecast Indicator]' forecast-column-type='forecast-indicator' name='[none:Forecast Indicator:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Recovered]' derivation='Sum' name='[sum:Recovered:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Date]' derivation='Day-Trunc' name='[tdy:Date:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='title' class='0' field='[federated.1i23pg81pzzcyk1cayku71r3hzam].[tdy:Date:qk]' scope='cols' value='Day' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.1i23pg81pzzcyk1cayku71r3hzam].[none:Forecast Indicator:nk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.1i23pg81pzzcyk1cayku71r3hzam].[fVal:sum:Recovered:qk]</rows>
+        <cols>[federated.1i23pg81pzzcyk1cayku71r3hzam].[tdy:Date:qk]</cols>
+        <forecast-specification auto-forecast-agg='true' band-confidence-level='95.000000' enabled='true' fill-type='fill-missing' ignore-last='1' model-type='auto-season' range-periods='Month-Trunc' range-size='3' range-type='next' show-prediction-bands='true' />
+      </table>
+      <simple-id uuid='{65E37FB9-A811-4514-ABB9-C5B26BB0CC61}' />
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard name='Dashboard 1'>
+      <style />
+      <size sizing-mode='automatic' />
+      <zones>
+        <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='100000' id='4' w='100000' x='0' y='0'>
+          <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='97654' id='13' param='horz' w='98640' x='680' y='1173'>
+            <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='97654' id='5' w='98640' x='680' y='1173'>
+              <zone h='32034' id='3' name='Sheet 1' w='98640' x='680' y='1173'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='33392' id='8' name='Sheet 2' w='98640' x='680' y='33207'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='32228' id='11' name='Sheet 3' w='98640' x='680' y='66599'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='800' minheight='800' sizing-mode='vscroll' />
+          <zones>
+            <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='100000' id='17' w='100000' x='0' y='0'>
+              <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='97654' id='16' param='vert' w='98640' x='680' y='1173'>
+                <zone fixed-size='249' h='32034' id='3' is-fixed='true' name='Sheet 1' w='98640' x='680' y='1173'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='259' h='33392' id='8' is-fixed='true' name='Sheet 2' w='98640' x='680' y='33207'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='250' h='32228' id='11' is-fixed='true' name='Sheet 3' w='98640' x='680' y='66599'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{1980D4BA-2924-4E1A-AD9A-6D82BD276C94}' />
+    </dashboard>
+  </dashboards>
+  <windows source-height='30'>
+    <window class='worksheet' maximized='true' name='Sheet 1'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1i23pg81pzzcyk1cayku71r3hzam].[none:Forecast Indicator:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{975F4A5E-B81C-44D1-85A8-228EEC4DB88B}' />
+    </window>
+    <window class='worksheet' name='Sheet 2'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1i23pg81pzzcyk1cayku71r3hzam].[none:Forecast Indicator:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{7655E931-728C-4584-818F-F91FA3945948}' />
+    </window>
+    <window class='worksheet' name='Sheet 3'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1i23pg81pzzcyk1cayku71r3hzam].[none:Forecast Indicator:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{972CDB17-A249-43C2-B4FC-98669C616B99}' />
+    </window>
+    <window class='dashboard' name='Dashboard 1'>
+      <viewpoints>
+        <viewpoint name='Sheet 1'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Sheet 2'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Sheet 3'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='11' />
+      <simple-id uuid='{1F292EA2-6FC8-4A3D-99A7-8C34AE1B5E68}' />
+    </window>
+  </windows>
+</workbook>

@@ -1,0 +1,711 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20211.21.0511.0935                               -->
+<workbook source-build='2021.1.2 (20211.21.0511.0935)' source-platform='win' version='18.1' xml:base='https://public.tableau.com' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <MapboxVectorStylesAndLayers />
+    <_.fcp.MarkAnimation.true...MarkAnimation />
+    <_.fcp.ObjectModelEncapsulateLegacy.true...ObjectModelEncapsulateLegacy />
+    <_.fcp.ObjectModelExtractV2.true...ObjectModelExtractV2 />
+    <_.fcp.ObjectModelTableType.true...ObjectModelTableType />
+    <_.fcp.SchemaViewerObjectModel.true...SchemaViewerObjectModel />
+    <_.fcp.SetMembershipControl.true...SetMembershipControl />
+    <SheetIdentifierTracking />
+    <WindowsPersistSimpleIdentifiers />
+    <WorksheetBackgroundTransparency />
+    <ZoneBackgroundTransparency />
+  </document-format-change-manifest>
+  <repository-location id='Covid_Dashboard_16226492198720' path='/workbooks' revision='1.0' />
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource hasconnection='false' inline='true' name='Parameters' version='18.1'>
+      <aliases enabled='yes' />
+      <column caption='Cases' datatype='string' name='[Parameter 1]' param-domain-type='list' role='measure' type='nominal' value='&quot;Daily&quot;'>
+        <calculation class='tableau' formula='&quot;Daily&quot;' />
+        <members>
+          <member value='&quot;Daily&quot;' />
+          <member value='&quot;Cumulative&quot;' />
+        </members>
+      </column>
+    </datasource>
+    <datasource caption='WHO-COVID-19-global-data' inline='true' name='federated.0nlw9290qn1mh51c9dzpn0k5ht0q' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='WHO-COVID-19-global-data' name='textscan.1uqvyss1yuvquz1bnrx3o0krdv4e'>
+            <connection class='textscan' directory='C:/Users/Vk_57/Desktop/Covid-19-Severity-Detector/model_csv' filename='WHO-COVID-19-global-data.csv' password='' server='' workgroup-auth-mode='as-is' />
+          </named-connection>
+        </named-connections>
+        <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='textscan.1uqvyss1yuvquz1bnrx3o0krdv4e' name='WHO-COVID-19-global-data.csv' table='[WHO-COVID-19-global-data#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_IN' separator=','>
+            <column datatype='date' name='Date_reported' ordinal='0' />
+            <column datatype='string' name='Country_code' ordinal='1' />
+            <column datatype='string' name='Country' ordinal='2' />
+            <column datatype='string' name='WHO_region' ordinal='3' />
+            <column datatype='integer' name='New_cases' ordinal='4' />
+            <column datatype='integer' name='Cumulative_cases' ordinal='5' />
+            <column datatype='integer' name='New_deaths' ordinal='6' />
+            <column datatype='integer' name='Cumulative_deaths' ordinal='7' />
+          </columns>
+        </_.fcp.ObjectModelEncapsulateLegacy.false...relation>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...relation connection='textscan.1uqvyss1yuvquz1bnrx3o0krdv4e' name='WHO-COVID-19-global-data.csv' table='[WHO-COVID-19-global-data#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_IN' separator=','>
+            <column datatype='date' name='Date_reported' ordinal='0' />
+            <column datatype='string' name='Country_code' ordinal='1' />
+            <column datatype='string' name='Country' ordinal='2' />
+            <column datatype='string' name='WHO_region' ordinal='3' />
+            <column datatype='integer' name='New_cases' ordinal='4' />
+            <column datatype='integer' name='Cumulative_cases' ordinal='5' />
+            <column datatype='integer' name='New_deaths' ordinal='6' />
+            <column datatype='integer' name='Cumulative_deaths' ordinal='7' />
+          </columns>
+        </_.fcp.ObjectModelEncapsulateLegacy.true...relation>
+        <refresh increment-key='' incremental-updates='false' />
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[WHO-COVID-19-global-data.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_GB&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;Rs&quot;</attribute>
+              <attribute datatype='string' name='debit-close-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='debit-open-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_IN&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Date_reported</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[Date_reported]</local-name>
+            <parent-name>[WHO-COVID-19-global-data.csv]</parent-name>
+            <remote-alias>Date_reported</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[WHO-COVID-19-global-data.csv_E104BAD2B6514D348F3D5B50CA2B949D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Country_code</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Country_code]</local-name>
+            <parent-name>[WHO-COVID-19-global-data.csv]</parent-name>
+            <remote-alias>Country_code</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[WHO-COVID-19-global-data.csv_E104BAD2B6514D348F3D5B50CA2B949D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Country</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Country]</local-name>
+            <parent-name>[WHO-COVID-19-global-data.csv]</parent-name>
+            <remote-alias>Country</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[WHO-COVID-19-global-data.csv_E104BAD2B6514D348F3D5B50CA2B949D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>WHO_region</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[WHO_region]</local-name>
+            <parent-name>[WHO-COVID-19-global-data.csv]</parent-name>
+            <remote-alias>WHO_region</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[WHO-COVID-19-global-data.csv_E104BAD2B6514D348F3D5B50CA2B949D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>New_cases</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[New_cases]</local-name>
+            <parent-name>[WHO-COVID-19-global-data.csv]</parent-name>
+            <remote-alias>New_cases</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[WHO-COVID-19-global-data.csv_E104BAD2B6514D348F3D5B50CA2B949D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Cumulative_cases</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Cumulative_cases]</local-name>
+            <parent-name>[WHO-COVID-19-global-data.csv]</parent-name>
+            <remote-alias>Cumulative_cases</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[WHO-COVID-19-global-data.csv_E104BAD2B6514D348F3D5B50CA2B949D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>New_deaths</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[New_deaths]</local-name>
+            <parent-name>[WHO-COVID-19-global-data.csv]</parent-name>
+            <remote-alias>New_deaths</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[WHO-COVID-19-global-data.csv_E104BAD2B6514D348F3D5B50CA2B949D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Cumulative_deaths</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Cumulative_deaths]</local-name>
+            <parent-name>[WHO-COVID-19-global-data.csv]</parent-name>
+            <remote-alias>Cumulative_deaths</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[WHO-COVID-19-global-data.csv_E104BAD2B6514D348F3D5B50CA2B949D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='Active Cases Measures' datatype='integer' name='[Calculation_844424978382954496]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='CASE [Parameters].[Parameter 1]&#13;&#10;WHEN &quot;Daily&quot; THEN [New_cases]&#13;&#10;WHEN &quot;Cumulative&quot; THEN [Cumulative_cases]&#13;&#10;END' />
+      </column>
+      <column caption='Death Cases Measures' datatype='integer' name='[Calculation_844424978386628611]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='CASE [Parameters].[Parameter 1]&#13;&#10;WHEN &quot;Daily&quot; THEN [New_deaths]&#13;&#10;WHEN &quot;Cumulative&quot; THEN [Cumulative_deaths]&#13;&#10;END' />
+      </column>
+      <column datatype='string' name='[Country]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+      <column caption='Country code' datatype='string' name='[Country_code]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+      <column caption='Cumulative cases' datatype='integer' name='[Cumulative_cases]' role='measure' type='quantitative' />
+      <column caption='Cumulative deaths' datatype='integer' name='[Cumulative_deaths]' role='measure' type='quantitative' />
+      <column caption='Date reported' datatype='date' name='[Date_reported]' role='dimension' type='ordinal' />
+      <column caption='New cases' datatype='integer' name='[New_cases]' role='measure' type='quantitative' />
+      <column caption='New deaths' datatype='integer' name='[New_deaths]' role='measure' type='quantitative' />
+      <column caption='WHO region' datatype='string' name='[WHO_region]' role='dimension' type='nominal' />
+      <_.fcp.ObjectModelTableType.true...column caption='WHO-COVID-19-global-data.csv' datatype='table' name='[__tableau_internal_object_id__].[WHO-COVID-19-global-data.csv_E104BAD2B6514D348F3D5B50CA2B949D]' role='measure' type='quantitative' />
+      <group caption='Action (Country)' hidden='true' name='[Action (Country)]' name-style='unqualified' user:auto-column='sheet_link'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[Country]' />
+        </groupfilter>
+      </group>
+      <extract _.fcp.ObjectModelExtractV2.true...object-id='' count='-1' enabled='true' units='records'>
+        <connection access_mode='readonly' authentication='auth-none' author-locale='en_US' class='hyper' dbname='C:/Users/Vk_57/Desktop/Covid-19-Severity-Detector/model_csv/WHO-COVID-19-global-data.hyper' default-settings='yes' schema='Extract' sslmode='' tablename='Extract' update-time='' username='tableau_internal_user'>
+          <_.fcp.ObjectModelEncapsulateLegacy.false...relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <_.fcp.ObjectModelEncapsulateLegacy.true...relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>Date_reported</remote-name>
+              <remote-type>133</remote-type>
+              <local-name>[Date_reported]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Date_reported</remote-alias>
+              <ordinal>0</ordinal>
+              <family>WHO-COVID-19-global-data.csv</family>
+              <local-type>date</local-type>
+              <aggregation>Year</aggregation>
+              <approx-count>1823</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Country_code</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[Country_code]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Country_code</remote-alias>
+              <ordinal>1</ordinal>
+              <family>WHO-COVID-19-global-data.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>320</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Country</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[Country]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Country</remote-alias>
+              <ordinal>2</ordinal>
+              <family>WHO-COVID-19-global-data.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>320</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>WHO_region</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[WHO_region]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>WHO_region</remote-alias>
+              <ordinal>3</ordinal>
+              <family>WHO-COVID-19-global-data.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>7</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>New_cases</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[New_cases]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>New_cases</remote-alias>
+              <ordinal>4</ordinal>
+              <family>WHO-COVID-19-global-data.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>5645</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Cumulative_cases</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[Cumulative_cases]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Cumulative_cases</remote-alias>
+              <ordinal>5</ordinal>
+              <family>WHO-COVID-19-global-data.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>18295</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>New_deaths</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[New_deaths]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>New_deaths</remote-alias>
+              <ordinal>6</ordinal>
+              <family>WHO-COVID-19-global-data.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>926</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Cumulative_deaths</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[Cumulative_deaths]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Cumulative_deaths</remote-alias>
+              <ordinal>7</ordinal>
+              <family>WHO-COVID-19-global-data.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>6125</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;India&quot;' />
+      </semantic-values>
+      <datasource-dependencies datasource='Parameters'>
+        <column caption='Cases' datatype='string' name='[Parameter 1]' param-domain-type='list' role='measure' type='nominal' value='&quot;Daily&quot;'>
+          <calculation class='tableau' formula='&quot;Daily&quot;' />
+        </column>
+      </datasource-dependencies>
+      <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+        <objects>
+          <object caption='WHO-COVID-19-global-data.csv' id='WHO-COVID-19-global-data.csv_E104BAD2B6514D348F3D5B50CA2B949D'>
+            <properties context=''>
+              <relation connection='textscan.1uqvyss1yuvquz1bnrx3o0krdv4e' name='WHO-COVID-19-global-data.csv' table='[WHO-COVID-19-global-data#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='en_IN' separator=','>
+                  <column datatype='date' name='Date_reported' ordinal='0' />
+                  <column datatype='string' name='Country_code' ordinal='1' />
+                  <column datatype='string' name='Country' ordinal='2' />
+                  <column datatype='string' name='WHO_region' ordinal='3' />
+                  <column datatype='integer' name='New_cases' ordinal='4' />
+                  <column datatype='integer' name='Cumulative_cases' ordinal='5' />
+                  <column datatype='integer' name='New_deaths' ordinal='6' />
+                  <column datatype='integer' name='Cumulative_deaths' ordinal='7' />
+                </columns>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='Extract' table='[Extract].[Extract]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+    </datasource>
+  </datasources>
+  <mapsources>
+    <mapsource name='Tableau' />
+  </mapsources>
+  <actions>
+    <action caption='Filter1' name='[Action1_4CA425EC39224DD39E346B75007EC627]'>
+      <activation type='on-select' />
+      <source dashboard='Dashboard 1' type='sheet' worksheet='Sheet 1' />
+      <command command='tsc:tsl-filter'>
+        <param name='exclude' value='Sheet 1' />
+        <param name='special-fields' value='all' />
+        <param name='target' value='Dashboard 1' />
+      </command>
+    </action>
+  </actions>
+  <worksheets>
+    <worksheet name='Sheet 1'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='WHO-COVID-19-global-data' name='federated.0nlw9290qn1mh51c9dzpn0k5ht0q' />
+          </datasources>
+          <mapsources>
+            <mapsource name='Tableau' />
+          </mapsources>
+          <datasource-dependencies datasource='federated.0nlw9290qn1mh51c9dzpn0k5ht0q'>
+            <column datatype='string' name='[Country]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+            <column caption='New cases' datatype='integer' name='[New_cases]' role='measure' type='quantitative' />
+            <column caption='New deaths' datatype='integer' name='[New_deaths]' role='measure' type='quantitative' />
+            <column-instance column='[Country]' derivation='None' name='[none:Country:nk]' pivot='key' type='nominal' />
+            <column-instance column='[New_cases]' derivation='Sum' name='[sum:New_cases:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[New_deaths]' derivation='Sum' name='[sum:New_deaths:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.0nlw9290qn1mh51c9dzpn0k5ht0q].[Longitude (generated)]' field-type='quantitative' max='34174093.774193868' min='-23371010.908499923' projection='EPSG:3857' range-type='fixed' scope='cols' type='space' />
+            <encoding attr='space' class='0' field='[federated.0nlw9290qn1mh51c9dzpn0k5ht0q].[Latitude (generated)]' field-type='quantitative' max='12362794.188123696' min='-2587649.6418903307' projection='EPSG:3857' range-type='fixed' scope='rows' type='space' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[federated.0nlw9290qn1mh51c9dzpn0k5ht0q].[sum:New_cases:qk]' palette='purple_10_0' type='interpolated' />
+          </style-rule>
+          <style-rule element='table'>
+            <format attr='show-null-value-warning' value='false' />
+          </style-rule>
+          <style-rule element='map'>
+            <format attr='washout' value='0.0' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0nlw9290qn1mh51c9dzpn0k5ht0q].[sum:New_cases:qk]' />
+              <lod column='[federated.0nlw9290qn1mh51c9dzpn0k5ht0q].[none:Country:nk]' />
+              <tooltip column='[federated.0nlw9290qn1mh51c9dzpn0k5ht0q].[sum:New_cases:qk]' />
+              <tooltip column='[federated.0nlw9290qn1mh51c9dzpn0k5ht0q].[sum:New_deaths:qk]' />
+              <geometry column='[federated.0nlw9290qn1mh51c9dzpn0k5ht0q].[Geometry (generated)]' />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run fontcolor='#787878'>Country:&#9;</run>
+                <run bold='true'><![CDATA[<[federated.0nlw9290qn1mh51c9dzpn0k5ht0q].[none:Country:nk]>]]></run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>New cases:&#9;</run>
+                <run bold='true' fontcolor='#4e79a7' fontsize='14'><![CDATA[<[federated.0nlw9290qn1mh51c9dzpn0k5ht0q].[sum:New_cases:qk]>]]></run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>New deaths:&#9;</run>
+                <run bold='true' fontcolor='#e15759' fontsize='14'><![CDATA[<[federated.0nlw9290qn1mh51c9dzpn0k5ht0q].[sum:New_deaths:qk]>]]></run>
+              </formatted-text>
+            </customized-tooltip>
+          </pane>
+        </panes>
+        <rows>[federated.0nlw9290qn1mh51c9dzpn0k5ht0q].[Latitude (generated)]</rows>
+        <cols>[federated.0nlw9290qn1mh51c9dzpn0k5ht0q].[Longitude (generated)]</cols>
+      </table>
+      <simple-id uuid='{4089EB13-B134-4B45-8CC5-ACCDCD037AEF}' />
+    </worksheet>
+    <worksheet name='Sheet 2'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='WHO-COVID-19-global-data' name='federated.0nlw9290qn1mh51c9dzpn0k5ht0q' />
+            <datasource name='Parameters' />
+          </datasources>
+          <datasource-dependencies datasource='Parameters'>
+            <column caption='Cases' datatype='string' name='[Parameter 1]' param-domain-type='list' role='measure' type='nominal' value='&quot;Daily&quot;'>
+              <calculation class='tableau' formula='&quot;Daily&quot;' />
+            </column>
+          </datasource-dependencies>
+          <datasource-dependencies datasource='federated.0nlw9290qn1mh51c9dzpn0k5ht0q'>
+            <column caption='Active Cases Measures' datatype='integer' name='[Calculation_844424978382954496]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='CASE [Parameters].[Parameter 1]&#13;&#10;WHEN &quot;Daily&quot; THEN [New_cases]&#13;&#10;WHEN &quot;Cumulative&quot; THEN [Cumulative_cases]&#13;&#10;END' />
+            </column>
+            <column datatype='string' name='[Country]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+            <column caption='Cumulative cases' datatype='integer' name='[Cumulative_cases]' role='measure' type='quantitative' />
+            <column caption='Date reported' datatype='date' name='[Date_reported]' role='dimension' type='ordinal' />
+            <column caption='New cases' datatype='integer' name='[New_cases]' role='measure' type='quantitative' />
+            <column-instance column='[Date_reported]' derivation='None' name='[none:Date_reported:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_844424978382954496]' derivation='Sum' name='[sum:Calculation_844424978382954496:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0nlw9290qn1mh51c9dzpn0k5ht0q].[Action (Country)]'>
+            <groupfilter function='member' level='[Country]' member='&quot;Canada&quot;' user:ui-action-filter='[Action1_4CA425EC39224DD39E346B75007EC627]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.0nlw9290qn1mh51c9dzpn0k5ht0q].[Action (Country)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-color' value='#8355e1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0nlw9290qn1mh51c9dzpn0k5ht0q].[sum:Calculation_844424978382954496:qk]</rows>
+        <cols>[federated.0nlw9290qn1mh51c9dzpn0k5ht0q].[none:Date_reported:qk]</cols>
+      </table>
+      <simple-id uuid='{4BE526FF-6BA9-4056-8A9A-5C8B373CBC22}' />
+    </worksheet>
+    <worksheet name='Sheet 3'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='WHO-COVID-19-global-data' name='federated.0nlw9290qn1mh51c9dzpn0k5ht0q' />
+            <datasource name='Parameters' />
+          </datasources>
+          <datasource-dependencies datasource='Parameters'>
+            <column caption='Cases' datatype='string' name='[Parameter 1]' param-domain-type='list' role='measure' type='nominal' value='&quot;Daily&quot;'>
+              <calculation class='tableau' formula='&quot;Daily&quot;' />
+            </column>
+          </datasource-dependencies>
+          <datasource-dependencies datasource='federated.0nlw9290qn1mh51c9dzpn0k5ht0q'>
+            <column caption='Death Cases Measures' datatype='integer' name='[Calculation_844424978386628611]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='CASE [Parameters].[Parameter 1]&#13;&#10;WHEN &quot;Daily&quot; THEN [New_deaths]&#13;&#10;WHEN &quot;Cumulative&quot; THEN [Cumulative_deaths]&#13;&#10;END' />
+            </column>
+            <column datatype='string' name='[Country]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+            <column caption='Cumulative deaths' datatype='integer' name='[Cumulative_deaths]' role='measure' type='quantitative' />
+            <column caption='Date reported' datatype='date' name='[Date_reported]' role='dimension' type='ordinal' />
+            <column caption='New deaths' datatype='integer' name='[New_deaths]' role='measure' type='quantitative' />
+            <column-instance column='[Date_reported]' derivation='None' name='[none:Date_reported:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_844424978386628611]' derivation='Sum' name='[sum:Calculation_844424978386628611:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0nlw9290qn1mh51c9dzpn0k5ht0q].[Action (Country)]'>
+            <groupfilter function='member' level='[Country]' member='&quot;Canada&quot;' user:ui-action-filter='[Action1_4CA425EC39224DD39E346B75007EC627]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.0nlw9290qn1mh51c9dzpn0k5ht0q].[Action (Country)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-color' value='#e15759' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0nlw9290qn1mh51c9dzpn0k5ht0q].[sum:Calculation_844424978386628611:qk]</rows>
+        <cols>[federated.0nlw9290qn1mh51c9dzpn0k5ht0q].[none:Date_reported:qk]</cols>
+      </table>
+      <simple-id uuid='{805DEEAD-A8CD-4072-919C-181C46EA4AB6}' />
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard name='Dashboard 1'>
+      <style />
+      <size sizing-mode='automatic' />
+      <datasources>
+        <datasource name='Parameters' />
+      </datasources>
+      <datasource-dependencies datasource='Parameters'>
+        <column caption='Cases' datatype='string' name='[Parameter 1]' param-domain-type='list' role='measure' type='nominal' value='&quot;Daily&quot;'>
+          <calculation class='tableau' formula='&quot;Daily&quot;' />
+          <members>
+            <member value='&quot;Daily&quot;' />
+            <member value='&quot;Cumulative&quot;' />
+          </members>
+        </column>
+      </datasource-dependencies>
+      <zones>
+        <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='100000' id='2' w='100000' x='0' y='0'>
+          <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='97736' id='8' param='horz' w='98764' x='618' y='1132'>
+            <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='97736' id='3' w='98764' x='618' y='1132'>
+              <zone h='48856' id='1' name='Sheet 1' show-title='false' w='98764' x='618' y='1132'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='24393' id='6' name='Sheet 2' show-title='false' w='98764' x='618' y='49988'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='24487' id='10' name='Sheet 3' show-title='false' w='98764' x='618' y='74381'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+        <zone _.fcp.SetMembershipControl.false...type='paramctrl' _.fcp.SetMembershipControl.true...type-v2='paramctrl' h='7432' id='9' mode='compact' param='[Parameters].[Parameter 1]' w='13853' x='82597' y='30912' />
+      </zones>
+      <simple-id uuid='{B2CB3326-C4CD-4FE2-9F94-4A07243DE6CF}' />
+    </dashboard>
+  </dashboards>
+  <windows source-height='30'>
+    <window class='worksheet' name='Sheet 1'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0nlw9290qn1mh51c9dzpn0k5ht0q].[sum:New_cases:qk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{02A013CC-DEBF-4EDD-9D45-C20946DDE3E4}' />
+    </window>
+    <window class='worksheet' name='Sheet 2'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card mode='compact' param='[Parameters].[Parameter 1]' type='parameter' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{C8EB7897-45B2-4FA7-AE08-30A6921C50AC}' />
+    </window>
+    <window class='worksheet' name='Sheet 3'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card mode='compact' param='[Parameters].[Parameter 1]' type='parameter' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <default-map-tool-selection tool='2' />
+      </viewpoint>
+      <simple-id uuid='{9C7833AC-AEB6-4C36-A3EA-8005EDB667A2}' />
+    </window>
+    <window class='dashboard' maximized='true' name='Dashboard 1'>
+      <viewpoints>
+        <viewpoint name='Sheet 1'>
+          <zoom type='entire-view' />
+          <default-map-tool-selection tool='1' />
+        </viewpoint>
+        <viewpoint name='Sheet 2'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Sheet 3'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='9' />
+      <device-preview selected='Desktop'>
+        <device name='Fire HD 10' type='Tablet' />
+      </device-preview>
+      <simple-id uuid='{C9E49B70-130F-4B79-8306-669E1E3F0817}' />
+    </window>
+  </windows>
+</workbook>

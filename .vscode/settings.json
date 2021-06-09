@@ -1,3 +1,7 @@
 {
+<<<<<<< HEAD
     "python.pythonPath": "C:\\Users\\Vk_57\\anaconda3\\python.exe"
+=======
+    "jupyter.jupyterServerType": "local"
+>>>>>>> 75c2f694f25481979f24a24edc415169589d4d33
 }
