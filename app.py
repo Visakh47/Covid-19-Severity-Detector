@@ -386,132 +386,133 @@ def main():
 
         st.write("\n\n")
     
-        
-        mapping_df = load_mapping()
+        try:
+            mapping_df = load_mapping()
 
-        rename_mapping = {
-                'date': 'Date',
-                'min_age_limit': 'Minimum Age Limit',
-                'available_capacity': 'Available Capacity',
-                'vaccine': 'Vaccine',
-                'pincode': 'Pincode',
-                'name': 'Hospital Name',
-                'state_name' : 'State',
-                'district_name' : 'District',
-                'block_name': 'Block Name',
-                'fee_type' : 'Fees'
-                }
+            rename_mapping = {
+                    'date': 'Date',
+                    'min_age_limit': 'Minimum Age Limit',
+                    'available_capacity': 'Available Capacity',
+                    'vaccine': 'Vaccine',
+                    'pincode': 'Pincode',
+                    'name': 'Hospital Name',
+                    'state_name' : 'State',
+                    'district_name' : 'District',
+                    'block_name': 'Block Name',
+                    'fee_type' : 'Fees'
+                    }
 
-        # for col in mapping_df:
-        #     st.write(col)
+            # for col in mapping_df:
+            #     st.write(col)
 
-        valid_states = list(np.unique(mapping_df["state_name"].values))
+            valid_states = list(np.unique(mapping_df["state_name"].values))
 
-        formcheck = st.form(key='my-form3')
-        center_column_1, right_column_1 = st.beta_columns(2)
-
-
-
-        with center_column_1:
-            state_inp = formcheck.selectbox('Select State 🗺️', [""] + valid_states)
-            if state_inp != "":
-                mapping_df = filter_column(mapping_df, "state_name", state_inp)
+            formcheck = st.form(key='my-form3')
+            center_column_1, right_column_1 = st.beta_columns(2)
 
 
 
-        mapping_dict = pd.Series(mapping_df["district id"].values,
-                                index = mapping_df["district name"].values).to_dict()
-
-        # numdays = st.sidebar.slider('Select Date Range', 0, 100, 10)
-        unique_districts = list(mapping_df["district name"].unique())
-        unique_districts.sort()
-        with right_column_1:
-            dist_inp = formcheck.selectbox('Select District 🏙️', unique_districts)
-
-        DIST_ID = mapping_dict[dist_inp]
-
-        base = datetime.datetime.today()
-        numdays = 3
-        date_list = [base + datetime.timedelta(days=x) for x in range(20)]
-        date_str = [x.strftime("%d-%m-%Y") for x in date_list]
-        temp_user_agent = UserAgent()
-        browser_header = {'User-Agent': temp_user_agent.random}
-
-        final_df = None
-        for INP_DATE in date_str:
-            URL = "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id={}&date={}".format(DIST_ID, INP_DATE)
-            response = requests.get(URL, headers=browser_header)
-            if (response.ok) and ('centers' in json.loads(response.text)):
-                resp_json = json.loads(response.text)['centers']
-                if resp_json is not None:
-                    df = pd.DataFrame(resp_json)
-                    if len(df):
-                        df = df.explode("sessions")
-                        df['min_age_limit'] = df.sessions.apply(lambda x: x['min_age_limit'])
-                        df['vaccine'] = df.sessions.apply(lambda x: x['vaccine'])
-                        df['available_capacity'] = df.sessions.apply(lambda x: x['available_capacity'])
-                        df['date'] = df.sessions.apply(lambda x: x['date'])
-                        df = df[["date", "available_capacity", "vaccine", "min_age_limit", "pincode", "name", "state_name", "district_name", "block_name", "fee_type"]]
-                        if final_df is not None:
-                            final_df = pd.concat([final_df, df])
-                        else:
-                            final_df = deepcopy(df)
-                else:
-                    st.error("No rows in the data Extracted from the API")
-        #     else:
-        #         st.error("Invalid response")
+            with center_column_1:
+                state_inp = formcheck.selectbox('Select State 🗺️', [""] + valid_states)
+                if state_inp != "":
+                    mapping_df = filter_column(mapping_df, "state_name", state_inp)
 
 
 
-        if (final_df is not None) and (len(final_df)):
-            final_df.drop_duplicates(inplace=True)
-            final_df.rename(columns=rename_mapping, inplace=True)
+            mapping_dict = pd.Series(mapping_df["district id"].values,
+                                    index = mapping_df["district name"].values).to_dict()
 
-            left_column_2, center_column_2, right_column_2, right_column_2a,  right_column_2b = st.beta_columns(5)
-            with left_column_2:
-                valid_pincodes = list(np.unique(final_df["Pincode"].values))
-                pincode_inp = formcheck.selectbox('Select Pincode 📍', [""] + valid_pincodes)
-                if pincode_inp != "":
-                    final_df = filter_column(final_df, "Pincode", pincode_inp)
+            # numdays = st.sidebar.slider('Select Date Range', 0, 100, 10)
+            unique_districts = list(mapping_df["district name"].unique())
+            unique_districts.sort()
+            with right_column_1:
+                dist_inp = formcheck.selectbox('Select District 🏙️', unique_districts)
 
-            with center_column_2:
-                valid_age = [18, 45]
-                age_inp = formcheck.selectbox('Select Minimum Age 👨', [""] + valid_age)
-                if age_inp != "":
-                    final_df = filter_column(final_df, "Minimum Age Limit", age_inp)
+            DIST_ID = mapping_dict[dist_inp]
 
-            with right_column_2:
-                valid_payments = ["Free", "Paid"]
-                pay_inp = formcheck.selectbox('Select Free or Paid 🆓 ', [""] + valid_payments)
-                if pay_inp != "":
-                    final_df = filter_column(final_df, "Fees", pay_inp)
-            
-            with right_column_2a:
-                valid_capacity = ["Available"]
-                cap_inp = formcheck.selectbox('Select Availablilty ❇️', [""] + valid_capacity)
-                if cap_inp != "":
-                    final_df = filter_capacity(final_df, "Available Capacity", 0)
+            base = datetime.datetime.today()
+            numdays = 3
+            date_list = [base + datetime.timedelta(days=x) for x in range(20)]
+            date_str = [x.strftime("%d-%m-%Y") for x in date_list]
+            temp_user_agent = UserAgent()
+            browser_header = {'User-Agent': temp_user_agent.random}
 
-            with right_column_2b:
-                valid_vaccines = ["COVISHIELD", "COVAXIN"]
-                vaccine_inp = formcheck.selectbox('Select Vaccine💉', [""] + valid_vaccines)
-                if vaccine_inp != "":
-                    final_df = filter_column(final_df, "Vaccine", vaccine_inp)
-            check = formcheck.form_submit_button("CHECK ✔️")
-            if check:
-                table = deepcopy(final_df)
-                table.reset_index(inplace=True, drop=True)
-                st.write("\n")
-                st.subheader(" RESULT :📋 ")
-                st.write("\n\n")
-                st.write(table)
+            final_df = None
+            for INP_DATE in date_str:
+                URL = "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id={}&date={}".format(DIST_ID, INP_DATE)
+                response = requests.get(URL, headers=browser_header)
+                if (response.ok) and ('centers' in json.loads(response.text)):
+                    resp_json = json.loads(response.text)['centers']
+                    if resp_json is not None:
+                        df = pd.DataFrame(resp_json)
+                        if len(df):
+                            df = df.explode("sessions")
+                            df['min_age_limit'] = df.sessions.apply(lambda x: x['min_age_limit'])
+                            df['vaccine'] = df.sessions.apply(lambda x: x['vaccine'])
+                            df['available_capacity'] = df.sessions.apply(lambda x: x['available_capacity'])
+                            df['date'] = df.sessions.apply(lambda x: x['date'])
+                            df = df[["date", "available_capacity", "vaccine", "min_age_limit", "pincode", "name", "state_name", "district_name", "block_name", "fee_type"]]
+                            if final_df is not None:
+                                final_df = pd.concat([final_df, df])
+                            else:
+                                final_df = deepcopy(df)
+                    else:
+                        st.error("No rows in the data Extracted from the API")
+            #     else:
+            #         st.error("Invalid response")
+
+
+
+            if (final_df is not None) and (len(final_df)):
+                final_df.drop_duplicates(inplace=True)
+                final_df.rename(columns=rename_mapping, inplace=True)
+
+                left_column_2, center_column_2, right_column_2, right_column_2a,  right_column_2b = st.beta_columns(5)
+                with left_column_2:
+                    valid_pincodes = list(np.unique(final_df["Pincode"].values))
+                    pincode_inp = formcheck.selectbox('Select Pincode 📍', [""] + valid_pincodes)
+                    if pincode_inp != "":
+                        final_df = filter_column(final_df, "Pincode", pincode_inp)
+
+                with center_column_2:
+                    valid_age = [18, 45]
+                    age_inp = formcheck.selectbox('Select Minimum Age 👨', [""] + valid_age)
+                    if age_inp != "":
+                        final_df = filter_column(final_df, "Minimum Age Limit", age_inp)
+
+                with right_column_2:
+                    valid_payments = ["Free", "Paid"]
+                    pay_inp = formcheck.selectbox('Select Free or Paid 🆓 ', [""] + valid_payments)
+                    if pay_inp != "":
+                        final_df = filter_column(final_df, "Fees", pay_inp)
                 
-        else:
-            formcheck.form_submit_button("CHECK ✔️")
-            st.error("THE API call limit has been reached , please try again after 5 minutes.")
+                with right_column_2a:
+                    valid_capacity = ["Available"]
+                    cap_inp = formcheck.selectbox('Select Availablilty ❇️', [""] + valid_capacity)
+                    if cap_inp != "":
+                        final_df = filter_capacity(final_df, "Available Capacity", 0)
 
-        st.write("\n\n\n\n")
+                with right_column_2b:
+                    valid_vaccines = ["COVISHIELD", "COVAXIN"]
+                    vaccine_inp = formcheck.selectbox('Select Vaccine💉', [""] + valid_vaccines)
+                    if vaccine_inp != "":
+                        final_df = filter_column(final_df, "Vaccine", vaccine_inp)
+                check = formcheck.form_submit_button("CHECK ✔️")
+                if check:
+                    table = deepcopy(final_df)
+                    table.reset_index(inplace=True, drop=True)
+                    st.write("\n")
+                    st.subheader(" RESULT :📋 ")
+                    st.write("\n\n")
+                    st.write(table)
+                    
+            else:
+                formcheck.form_submit_button("CHECK ✔️")
+                st.error("THE API call limit has been reached , please try again after 5 minutes.")
 
+            st.write("\n\n\n\n")
+        except:
+            st.error("The Cowin API is not available outside india")
 
     if option == 'Analytics Dashboard':
 
