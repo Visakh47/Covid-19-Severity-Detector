@@ -603,10 +603,10 @@ def main():
         fig = plt.figure(figsize = (6,6))
         plt.plot(dose)
         plt.plot(forecast, color='green')
-        plt.fill_between(ls.index, ls, us, alpha=0.5, facecolor='lime')
+        plt.fill_between(ls.index, ls, us, alpha=0.5, facecolor='green')
         plt.title("Forecast", color='white',size=15)
         plt.xlabel("Number of days", color='white',size=15)
-        plt.ylabel("Daily Vaccinations (in 10^6)", color='white',size=15)
+        plt.ylabel("Daily Vaccinations (in 10^6) ", color='white',size=15)
         st.plotly_chart(fig)
 
     if option == 'Admin':
