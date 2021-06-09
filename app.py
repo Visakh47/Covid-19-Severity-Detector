@@ -571,19 +571,27 @@ def main():
 
         
 
-        st.markdown('<p class="etitle" style="font-size:25px">Forecasting Vaccination Rate Using ARIMA Model 💉 </p>', unsafe_allow_html=True)
+        st.markdown('<p class="etitle" style="font-size:25px">Forecasting Daily Vaccinations Using ARIMA Model 💉 </p>', unsafe_allow_html=True)
         st.write("\n")
         st.write("\n")
 
-        days = st.number_input(label='Enter no. of days for forecasting vaccination rate (India Dataset)',min_value=15,value=15,step=1,format="%i")
+        days = st.number_input(label='Enter no. of days for forecasting daily vaccinations(India Dataset)',min_value=15,value=15,step=1,format="%i")
         days = int(days)
         st.write("\n")
         st.write("\n")
-        dfv = pd.read_csv("model_csv/vaccination.csv",index_col='Updated On',parse_dates=True)
-        fit = auto_arima(dfv["First Dose Administered"], trace = True, suppress_warnings = True)
-        first_dose = dfv["First Dose Administered"].values
+        dfv = pd.read_csv("model_csv/data.csv")
+        dfv = dfv.drop(0)
+        dfv.date = pd.to_datetime(dfv.date, format='%Y-%m-%d')
+        dfv = dfv.set_index('date')
+        dfv = dfv.fillna(0)             # Replacing NaN with zero since forecasting cannot be done by dropping those values or with NaN's
+        
+        ndf = dfv.loc[dfv["location"] == "India"]
+        dose = ndf["daily_vaccinations"].values
+        fit = auto_arima(ndf["daily_vaccinations"], trace = True, suppress_warnings = True)
+
+        #using forecasting 
         f, confint = fit.predict(n_periods = days, return_conf_int=True)
-        f_index = np.arange(len(first_dose), len(first_dose)+ days)
+        f_index = np.arange(len(dose), len(dose)+ days)
 
         forecast = pd.Series(f, index = f_index)
         ls = pd.Series(confint[:, 0], index = f_index)
@@ -593,12 +601,12 @@ def main():
         st.write("\n")
         st.write("\n")
         fig = plt.figure(figsize = (6,6))
-        plt.plot(first_dose)
+        plt.plot(dose)
         plt.plot(forecast, color='green')
         plt.fill_between(ls.index, ls, us, alpha=0.5, facecolor='green')
         plt.title("Forecast", color='white',size=15)
         plt.xlabel("Number of days", color='white',size=15)
-        plt.ylabel("Rate of vaccinations", color='white',size=15)
+        plt.ylabel("Daily Vaccinations (in 10^6)", color='white',size=15)
         st.plotly_chart(fig)
 
     if option == 'Admin':
