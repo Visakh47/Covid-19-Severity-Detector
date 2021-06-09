@@ -382,7 +382,7 @@ def main():
 
         st.write("\n\n")
 
-        st.info("The CoWIN API's Requests are limited , Sometimes results may not come. Try again after 5 minutes 🌐 ")
+        st.info("The CoWIN API's requests are limited , Sometimes results may not come. Try again after 5 minutes 🌐 ")
 
         st.write("\n\n")
     
