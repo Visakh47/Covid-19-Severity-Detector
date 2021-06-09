@@ -579,7 +579,7 @@ def main():
         days = int(days)
         st.write("\n")
         st.write("\n")
-        dfv = pd.read_csv("model_csv/vaccination.csv",index_col='Updated On ',parse_dates=True)
+        dfv = pd.read_csv("model_csv/vaccination.csv",index_col='Updated On',parse_dates=True)
         fit = auto_arima(dfv["First Dose Administered"], trace = True, suppress_warnings = True)
         first_dose = dfv["First Dose Administered"].values
         f, confint = fit.predict(n_periods = days, return_conf_int=True)
