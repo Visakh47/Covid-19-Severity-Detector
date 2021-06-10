@@ -1,0 +1,217 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20211.21.0511.0935                               -->
+<workbook original-version='18.1' source-build='2021.1.2 (20211.21.0511.0935)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <_.fcp.MarkAnimation.true...MarkAnimation />
+    <_.fcp.ObjectModelEncapsulateLegacy.true...ObjectModelEncapsulateLegacy />
+    <_.fcp.ObjectModelTableType.true...ObjectModelTableType />
+    <_.fcp.SchemaViewerObjectModel.true...SchemaViewerObjectModel />
+    <SheetIdentifierTracking />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='WHO-COVID-19-global-data Extract' inline='true' name='federated.1wi5ngj1xwe0rl1066xv81xwu3pt' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='WHO-COVID-19-global-data' name='hyper.0kyt2cg1mh91mt17drtn50p4vgz5'>
+            <connection authentication='auth-none' author-locale='en_US' class='hyper' dbname='C:/Users/Vk_57/Desktop/Covid-19-Severity-Detector/model_csv/WHO-COVID-19-global-data.hyper' default-settings='yes' server='' sslmode='' username='tableau_internal_user' />
+          </named-connection>
+        </named-connections>
+        <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='hyper.0kyt2cg1mh91mt17drtn50p4vgz5' name='Extract' table='[Extract].[Extract]' type='table' />
+        <_.fcp.ObjectModelEncapsulateLegacy.true...relation connection='hyper.0kyt2cg1mh91mt17drtn50p4vgz5' name='Extract' table='[Extract].[Extract]' type='table' />
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>Date_reported</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[Date_reported]</local-name>
+            <parent-name>[Extract]</parent-name>
+            <remote-alias>Date_reported</remote-alias>
+            <ordinal>0</ordinal>
+            <family>WHO-COVID-19-global-data.csv</family>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <approx-count>1823</approx-count>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Extract (Extract.Extract)_552BF048C99E4B8687C3298D9D601D2A]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Country_code</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Country_code]</local-name>
+            <parent-name>[Extract]</parent-name>
+            <remote-alias>Country_code</remote-alias>
+            <ordinal>1</ordinal>
+            <family>WHO-COVID-19-global-data.csv</family>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>320</approx-count>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Extract (Extract.Extract)_552BF048C99E4B8687C3298D9D601D2A]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Country</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Country]</local-name>
+            <parent-name>[Extract]</parent-name>
+            <remote-alias>Country</remote-alias>
+            <ordinal>2</ordinal>
+            <family>WHO-COVID-19-global-data.csv</family>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>320</approx-count>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Extract (Extract.Extract)_552BF048C99E4B8687C3298D9D601D2A]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>WHO_region</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[WHO_region]</local-name>
+            <parent-name>[Extract]</parent-name>
+            <remote-alias>WHO_region</remote-alias>
+            <ordinal>3</ordinal>
+            <family>WHO-COVID-19-global-data.csv</family>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>7</approx-count>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Extract (Extract.Extract)_552BF048C99E4B8687C3298D9D601D2A]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>New_cases</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[New_cases]</local-name>
+            <parent-name>[Extract]</parent-name>
+            <remote-alias>New_cases</remote-alias>
+            <ordinal>4</ordinal>
+            <family>WHO-COVID-19-global-data.csv</family>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <approx-count>5645</approx-count>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Extract (Extract.Extract)_552BF048C99E4B8687C3298D9D601D2A]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Cumulative_cases</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Cumulative_cases]</local-name>
+            <parent-name>[Extract]</parent-name>
+            <remote-alias>Cumulative_cases</remote-alias>
+            <ordinal>5</ordinal>
+            <family>WHO-COVID-19-global-data.csv</family>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <approx-count>18295</approx-count>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Extract (Extract.Extract)_552BF048C99E4B8687C3298D9D601D2A]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>New_deaths</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[New_deaths]</local-name>
+            <parent-name>[Extract]</parent-name>
+            <remote-alias>New_deaths</remote-alias>
+            <ordinal>6</ordinal>
+            <family>WHO-COVID-19-global-data.csv</family>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <approx-count>926</approx-count>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Extract (Extract.Extract)_552BF048C99E4B8687C3298D9D601D2A]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Cumulative_deaths</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Cumulative_deaths]</local-name>
+            <parent-name>[Extract]</parent-name>
+            <remote-alias>Cumulative_deaths</remote-alias>
+            <ordinal>7</ordinal>
+            <family>WHO-COVID-19-global-data.csv</family>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <approx-count>6125</approx-count>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Extract (Extract.Extract)_552BF048C99E4B8687C3298D9D601D2A]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column datatype='string' name='[Country]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+      <column caption='Country code' datatype='string' name='[Country_code]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+      <column caption='Cumulative cases' datatype='integer' name='[Cumulative_cases]' role='measure' type='quantitative' />
+      <column caption='Cumulative deaths' datatype='integer' name='[Cumulative_deaths]' role='measure' type='quantitative' />
+      <column caption='Date reported' datatype='date' name='[Date_reported]' role='dimension' type='ordinal' />
+      <column caption='New cases' datatype='integer' name='[New_cases]' role='measure' type='quantitative' />
+      <column caption='New deaths' datatype='integer' name='[New_deaths]' role='measure' type='quantitative' />
+      <column caption='WHO region' datatype='string' name='[WHO_region]' role='dimension' type='nominal' />
+      <_.fcp.ObjectModelTableType.true...column caption='Extract' datatype='table' name='[__tableau_internal_object_id__].[Extract (Extract.Extract)_552BF048C99E4B8687C3298D9D601D2A]' role='measure' type='quantitative' />
+      <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;India&quot;' />
+      </semantic-values>
+      <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+        <objects>
+          <object caption='Extract' id='Extract (Extract.Extract)_552BF048C99E4B8687C3298D9D601D2A'>
+            <properties context=''>
+              <relation connection='hyper.0kyt2cg1mh91mt17drtn50p4vgz5' name='Extract' table='[Extract].[Extract]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Sheet 1'>
+      <table>
+        <view>
+          <datasources />
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{0B4A2036-F12B-497A-B069-5969CB83C4B0}' />
+    </worksheet>
+  </worksheets>
+  <windows source-height='30'>
+    <window class='worksheet' maximized='true' name='Sheet 1'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='31'>
+            <card type='columns' />
+          </strip>
+          <strip size='31'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{C732E3B1-4B77-4297-B696-E237C553980C}' />
+    </window>
+  </windows>
+</workbook>
