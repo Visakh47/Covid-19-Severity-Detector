@@ -1,5 +1,5 @@
 # Covid 19 Severity Detector
-A Machine Learning model integrated with a front end interface using streamlit UI and deployed via heroku through which users can predict if they have covid 19 and how severe it is based on the given symptoms and using the COWIN API , we are able to provide vaccination details for each state with multiple filters. 
+A Machine Learning model integrated with a front end interface using streamlit UI and deployed via Amazon EC2 instance through which users can predict if they have covid 19 and how severe it is based on the given symptoms and using the COWIN API , we are able to provide vaccination details for each state with multiple filters. 
 
 Check out the application here : [Covid Help App](http://65.0.130.4:8501/)
 
